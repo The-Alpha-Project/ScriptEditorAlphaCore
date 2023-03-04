@@ -533,7 +533,7 @@ namespace ScriptEditor
             string query = GenerateSaveTemplateQuery(selectedItem.Template);
             if (Helpers.ShowSaveDialog(ref query) == DialogResult.OK)
             {
-                MySqlConnection conn = new MySqlConnection(Program.connString);
+                MySqlConnection conn = new MySqlConnection(string.Format(Program.connString, "alpha_world"));
                 MySqlCommand command = conn.CreateCommand();
                 command.CommandText = query;
                 try
@@ -596,7 +596,7 @@ namespace ScriptEditor
 
             if (Helpers.ShowSaveDialog(ref query) == DialogResult.OK)
             {
-                MySqlConnection conn = new MySqlConnection(Program.connString);
+                MySqlConnection conn = new MySqlConnection(string.Format(Program.connString, "alpha_world"));
                 MySqlCommand command = conn.CreateCommand();
                 command.CommandText = query;
                 try

@@ -434,11 +434,11 @@ namespace ScriptEditor
             return "-NONE-";
         }
 
-        public static void LoadBroadcastTexts(string connString)
+        public static void LoadBroadcastTexts(string connString, string database)
         {
             BroadcastTextsList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT `entry`, `male_text`, `female_text`, `chat_type`, `language_id` FROM `broadcast_text` ORDER BY `entry`";
             try
@@ -464,13 +464,13 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadQuests(string connString)
+        public static void LoadQuests(string connString, string database)
         {
             QuestInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `entry`, `MinLevel`, `QuestLevel`, `Title` FROM `quest_template` t1 WHERE `patch`=(SELECT max(`patch`) FROM `quest_template` t2 WHERE t1.`entry`=t2.`entry`) ORDER BY `entry`";
+            command.CommandText = "SELECT `entry`, `MinLevel`, `QuestLevel`, `Title` FROM `quest_template` ORDER BY `entry`";
             try
             {
                 conn.Open();
@@ -489,13 +489,13 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadGameObjects(string connString)
+        public static void LoadGameObjects(string connString, string database)
         {
             GameObjectInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `entry`, `type`, `displayId`, `name` FROM `gameobject_template` t1 WHERE `patch`=(SELECT max(`patch`) FROM `gameobject_template` t2 WHERE t1.`entry`=t2.`entry`) ORDER BY `entry`";
+            command.CommandText = "SELECT `entry`, `type`, `displayId`, `name` FROM `gameobject_template` t1 ORDER BY `entry`";
             try
             {
                 conn.Open();
@@ -514,13 +514,13 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadCreatures(string connString)
+        public static void LoadCreatures(string connString, string database)
         {
             CreatureInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `entry`, `level_min`, `level_max`, `rank`, `name`, `spell_list_id` FROM `creature_template` t1 WHERE `patch`=(SELECT max(`patch`) FROM `creature_template` t2 WHERE t1.`entry`=t2.`entry`) ORDER BY `entry`";
+            command.CommandText = "SELECT `entry`, `level_min`, `level_max`, `rank`, `name`, `spell_list_id` FROM `creature_template` ORDER BY `entry`";
             try
             {
                 conn.Open();
@@ -539,11 +539,11 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadCreatureSpells(string connString)
+        public static void LoadCreatureSpells(string connString, string database)
         {
             CreatureSpellsInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT * FROM `creature_spells` ORDER BY `entry`";
             try
@@ -662,13 +662,13 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadSpells(string connString)
+        public static void LoadSpells(string connString, string database)
         {
             SpellInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `entry`, `effect1`, `effect2`, `effect3`, `name`, `description` FROM `spell_template` t1 WHERE `build`=(SELECT max(`build`) FROM `spell_template` t2 WHERE t1.`entry`=t2.`entry` && `build` <= 5875) ORDER BY `entry`";
+            command.CommandText = "SELECT `ID`, `EffectMiscValue_1`, `EffectMiscValue_2`, `EffectMiscValue_3`, `Name_enUS`, `Description_enUS` FROM `spell` ORDER BY `ID`";
             try
             {
                 conn.Open();
@@ -677,7 +677,7 @@ namespace ScriptEditor
                 while (reader.Read())
                 {
                     // Add the spell entry to the list.
-                    SpellInfoList.Add(new SpellInfo(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetUInt32(2), reader.GetUInt32(3), reader.GetString(4), reader.GetString(5)));
+                    SpellInfoList.Add(new SpellInfo(reader.GetUInt32(0), 0, 0, 0, reader.GetString(4), reader.GetString(5)));
                 }
                 reader.Close();
             }
@@ -687,13 +687,13 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadItems(string connString)
+        public static void LoadItems(string connString, string database)
         {
             ItemInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `entry`, `required_level`, `item_level`, `inventory_type`, `display_id`, `name` FROM `item_template` t1 WHERE `patch`=(SELECT max(`patch`) FROM `item_template` t2 WHERE t1.`entry`=t2.`entry`) ORDER BY `entry`";
+            command.CommandText = "SELECT `entry`, `required_level`, `item_level`, `inventory_type`, `display_id`, `name` FROM `item_template` ORDER BY `entry`";
             try
             {
                 conn.Open();
@@ -712,12 +712,12 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadCondition(string connString)
+        public static void LoadCondition(string connString, string database)
         {
             ConditionInfoList.Clear();
             OriginalConditionInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT `condition_entry`, `type`, `value1`, `value2`, `value3`, `value4`, `flags` FROM `conditions` ORDER BY `condition_entry`";
             try
@@ -744,11 +744,11 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadAreas(string connString)
+        public static void LoadAreas(string connString, string database)
         {
             AreaInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT `entry`, `map_id`, `zone_id`, `name` FROM `area_template` ORDER BY `entry`";
             try
@@ -769,11 +769,11 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadSounds(string connString)
+        public static void LoadSounds(string connString, string database)
         {
             SoundInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT `id`, `name` FROM `sound_entries` ORDER BY `id`";
             try
@@ -794,13 +794,13 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadFactions(string connString)
+        public static void LoadFactions(string connString, string database)
         {
             FactionInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `id`, `reputation_list_id`, `team`, `name`, `description` FROM `faction` t1 WHERE `build`=(SELECT max(`build`) FROM `faction` t2 WHERE t1.`id`=t2.`id` && `build` <= 5875) ORDER BY `id`";
+            command.CommandText = "SELECT `id`, `Name_enUS` AS name FROM `faction` ORDER BY `id`";
             try
             {
                 conn.Open();
@@ -809,7 +809,7 @@ namespace ScriptEditor
                 while (reader.Read())
                 {
                     // Add the new faction entry to the list.
-                    FactionInfoList.Add(new FactionInfo(reader.GetUInt32(0), reader.GetInt32(1), reader.GetUInt32(2), reader.GetString(3), reader.GetString(4)));
+                    FactionInfoList.Add(new FactionInfo(reader.GetUInt32(0), 0, 0, reader.GetString(1), ""));
                 }
                 reader.Close();
             }
@@ -819,13 +819,13 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadFactionTemplates(string connString)
+        public static void LoadFactionTemplates(string connString, string database)
         {
             FactionTemplateInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `id`, `faction_id`, `faction_flags` FROM `faction_template` t1 WHERE `build`=(SELECT max(`build`) FROM `faction_template` t2 WHERE t1.`id`=t2.`id` && `build` <= 5875) ORDER BY `id`";
+            command.CommandText = "SELECT `id`, `Faction` AS faction_id FROM `factiontemplate` ORDER BY `id`";
             try
             {
                 conn.Open();
@@ -834,7 +834,7 @@ namespace ScriptEditor
                 while (reader.Read())
                 {
                     // Add the new faction template entry to the list.
-                    FactionTemplateInfoList.Add(new FactionTemplateInfo(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetUInt32(2)));
+                    FactionTemplateInfoList.Add(new FactionTemplateInfo(reader.GetUInt32(0), reader.GetUInt32(1), 0));
                 }
                 reader.Close();
             }
@@ -844,11 +844,11 @@ namespace ScriptEditor
             }
             conn.Close();
         }
-        public static void LoadGameEvents(string connString)
+        public static void LoadGameEvents(string connString, string database)
         {
             GameEventInfoList.Clear();
 
-            MySqlConnection conn = new MySqlConnection(connString);
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
             command.CommandText = "SELECT `entry`, `occurence`, `length`, `description`, `patch_min`, `patch_max` FROM `game_event` ORDER BY `entry`";
             try

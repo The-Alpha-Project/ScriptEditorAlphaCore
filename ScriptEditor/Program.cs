@@ -51,30 +51,30 @@ namespace ScriptEditor
 
             // Load content from the database.
             Console.WriteLine("Loading texts...");
-            GameData.LoadBroadcastTexts(connString);
+            GameData.LoadBroadcastTexts(connString, "alpha_world");
             Console.WriteLine("Loading quests...");
-            GameData.LoadQuests(connString);
+            GameData.LoadQuests(connString, "alpha_world");
             Console.WriteLine("Loading gameobjects...");
-            GameData.LoadGameObjects(connString);
+            GameData.LoadGameObjects(connString, "alpha_world");
             Console.WriteLine("Loading creatures...");
-            GameData.LoadCreatures(connString);
+            GameData.LoadCreatures(connString, "alpha_world");
             Console.WriteLine("Loading spells...");
-            GameData.LoadSpells(connString);
+            GameData.LoadSpells(connString, "alpha_dbc");
             Console.WriteLine("Loading items...");
-            GameData.LoadItems(connString);
+            GameData.LoadItems(connString, "alpha_world");
             Console.WriteLine("Loading conditions...");
-            GameData.LoadCondition(connString);
+            GameData.LoadCondition(connString, "alpha_world");
             Console.WriteLine("Loading areas...");
-            GameData.LoadAreas(connString);
-            Console.WriteLine("Loading sounds...");
-            GameData.LoadSounds(connString);
+            GameData.LoadAreas(connString, "alpha_world");
+            // Console.WriteLine("Loading sounds...");
+            // GameData.LoadSounds(connString, "alpha_dbc");
             Console.WriteLine("Loading factions...");
-            GameData.LoadFactions(connString);
-            GameData.LoadFactionTemplates(connString);
-            Console.WriteLine("Loading game events...");
-            GameData.LoadGameEvents(connString);
+            GameData.LoadFactions(connString, "alpha_dbc");
+            GameData.LoadFactionTemplates(connString, "alpha_dbc");
+            // Console.WriteLine("Loading game events...");
+            // GameData.LoadGameEvents(connString, "alpha_world");
             Console.WriteLine("Loading creature spells...");
-            GameData.LoadCreatureSpells(connString);
+            GameData.LoadCreatureSpells(connString, "alpha_world");
 
             // Closes the temporary console window.
             NativeMethods.FreeConsole();
@@ -114,7 +114,7 @@ namespace ScriptEditor
                     highlight = true;
             }
 
-            connString = "Server=" + mysqlHost + ";Database=" + mysqlDB + ";Port=" + mysqlPort + ";Uid=" + mysqlUser + ";Pwd=" + mysqlPass + ";";
+            connString = "Server=" + mysqlHost + ";Database={0};Port=" + mysqlPort + ";Uid=" + mysqlUser + ";Pwd=" + mysqlPass + ";";
         }
 
         static void SetDefaultCulture(CultureInfo culture)
