@@ -78,8 +78,7 @@ namespace ScriptEditor
             {
                 FormQuestFinder finder = new FormQuestFinder();
                 finder.ShowDialog();
-            };
-            
+            };            
             tsmiSpellFinder.Click += (sender, e) =>
             {
                 FormSpellFinder finder = new FormSpellFinder();
