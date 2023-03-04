@@ -77,7 +77,7 @@ namespace ScriptEditor
 
                 var parser = new FileIniDataParser();
                 parser.WriteFile(@"config.ini", data);
-                MessageBox.Show("A new config.ini file with default values has been created. If database connection fails please review it and change values if needed.");
+                MessageBox.Show("A new config.ini file with default values has been created in the program's directory. If database connection fails please review it and change values if needed.");
             }
 
             connString = "Server=" + mysqlHost + ";Database={0};Port=" + mysqlPort + ";Uid=" + mysqlUser + ";Pwd=" + mysqlPass + ";";
