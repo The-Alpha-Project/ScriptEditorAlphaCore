@@ -12,27 +12,18 @@ namespace ScriptEditor
     static class Program
     {
         // MySQL connection data.
-        public static string connString = "Server=localhost;Database=mangos;Port=3306;Uid=root;Pwd=root;";
+        public static string connString = "Server=localhost;Database=%s;Port=3306;Uid=root;Pwd=pwd;";
         public static string mysqlUser = "root";
-        public static string mysqlPass = "root";
+        public static string mysqlPass = "pwd";
         public static string mysqlHost = "localhost";
         public static string mysqlPort = "3306";
-        public static string mysqlDB = "mangos";
+        public static string mysqlDB = "alpha_world";
 
         // Highlight non-default values.
         public static bool highlight = false;
 
         // Desired culture info.
         public static string locale = "en-US";
-
-        internal sealed class NativeMethods
-        {
-            [DllImport("kernel32.dll")]
-            public static extern bool AllocConsole();
-
-            [DllImport("kernel32.dll")]
-            public static extern bool FreeConsole();
-        }
 
         /// <summary>
         /// The main entry point for the application.
@@ -45,45 +36,25 @@ namespace ScriptEditor
 
             LoadConfig();
 
-            // Open a console window so the user can see loading progress.
-            NativeMethods.AllocConsole();
-            Console.WriteLine("Please wait while loading the database.\n");
-
-            // Load content from the database.
-            Console.WriteLine("Loading texts...");
-            GameData.LoadBroadcastTexts(connString, "alpha_world");
-            Console.WriteLine("Loading quests...");
-            GameData.LoadQuests(connString, "alpha_world");
-            Console.WriteLine("Loading gameobjects...");
-            GameData.LoadGameObjects(connString, "alpha_world");
-            Console.WriteLine("Loading creatures...");
-            GameData.LoadCreatures(connString, "alpha_world");
-            Console.WriteLine("Loading spells...");
-            GameData.LoadSpells(connString, "alpha_dbc");
-            Console.WriteLine("Loading items...");
-            GameData.LoadItems(connString, "alpha_world");
-            Console.WriteLine("Loading conditions...");
-            GameData.LoadCondition(connString, "alpha_world");
-            Console.WriteLine("Loading areas...");
-            GameData.LoadAreas(connString, "alpha_world");
-            // Console.WriteLine("Loading sounds...");
-            // GameData.LoadSounds(connString, "alpha_dbc");
-            Console.WriteLine("Loading factions...");
-            GameData.LoadFactions(connString, "alpha_dbc");
-            GameData.LoadFactionTemplates(connString, "alpha_dbc");
-            // Console.WriteLine("Loading game events...");
-            // GameData.LoadGameEvents(connString, "alpha_world");
-            Console.WriteLine("Loading creature spells...");
-            GameData.LoadCreatureSpells(connString, "alpha_world");
-
-            // Closes the temporary console window.
-            NativeMethods.FreeConsole();
-
             // Apply locale settings.
             SetDefaultCulture(new CultureInfo(locale));
 
+            GameData.LoadBroadcastTexts(connString, "alpha_world");
+            GameData.LoadQuests(connString, "alpha_world");
+            GameData.LoadGameObjects(connString, "alpha_world");
+            GameData.LoadCreatures(connString, "alpha_world");
+            GameData.LoadSpells(connString, "alpha_dbc");
+            GameData.LoadItems(connString, "alpha_world");
+            GameData.LoadCondition(connString, "alpha_world");
+            GameData.LoadAreas(connString, "alpha_world");
+            GameData.LoadFactions(connString, "alpha_dbc");
+            GameData.LoadFactionTemplates(connString, "alpha_dbc");
+            GameData.LoadCreatureSpells(connString, "alpha_world");
+
             // Start the main form.
             Application.Run(new Form1());
+
+
         }
 
         private static void LoadConfig()
