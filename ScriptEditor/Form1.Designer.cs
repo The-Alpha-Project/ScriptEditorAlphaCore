@@ -63,12 +63,16 @@
             this.tsmiFlagsNpcUF = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFlagsPlayerUF = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFlagsSpellMechanic = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.LoadingBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.LoadingStatusText = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.picScriptEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEventEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGitLink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCastsEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picConditionEditor)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // picScriptEditor
@@ -152,6 +156,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(330, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // tsmiEditors
             // 
@@ -349,6 +354,29 @@
             this.tsmiFlagsSpellMechanic.Size = new System.Drawing.Size(218, 22);
             this.tsmiFlagsSpellMechanic.Text = "Spell Mechanic";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LoadingBar,
+            this.LoadingStatusText});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 349);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(330, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // LoadingBar
+            // 
+            this.LoadingBar.Name = "LoadingBar";
+            this.LoadingBar.Size = new System.Drawing.Size(100, 16);
+            this.LoadingBar.Step = 11;
+            // 
+            // LoadingStatusText
+            // 
+            this.LoadingStatusText.Name = "LoadingStatusText";
+            this.LoadingStatusText.Size = new System.Drawing.Size(62, 17);
+            this.LoadingStatusText.Text = "Loading ...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,6 +384,7 @@
             this.BackgroundImage = global::ScriptEditor.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(330, 371);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.picConditionEditor);
             this.Controls.Add(this.picCastsEditor);
             this.Controls.Add(this.picGitLink);
@@ -369,6 +398,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "AlphaCore Developer Tools";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picScriptEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEventEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGitLink)).EndInit();
@@ -376,6 +406,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picConditionEditor)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,5 +449,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiFlagsNpcUF;
         private System.Windows.Forms.ToolStripMenuItem tsmiFlagsPlayerUF;
         private System.Windows.Forms.ToolStripMenuItem tsmiFlagsSpellMechanic;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar LoadingBar;
+        private System.Windows.Forms.ToolStripStatusLabel LoadingStatusText;
     }
 }

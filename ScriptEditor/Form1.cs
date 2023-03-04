@@ -1,34 +1,176 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Media;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ScriptEditor
 {
     public partial class Form1 : Form
     {
-        SoundPlayer player = new SoundPlayer(ScriptEditor.Properties.Resources.MouseOver);
+        bool dataLoaded = false;
+
+        SoundPlayer player = new SoundPlayer(Properties.Resources.MouseOver);
 
         // Images for the buttons that change when moused over.
-        Image imgScriptEditor = ScriptEditor.Properties.Resources.script_editor_button_black;
-        Image imgScriptEditorHighlighted = ScriptEditor.Properties.Resources.script_editor_button;
-        Image imgEventEditor = ScriptEditor.Properties.Resources.event_editor_button_black;
-        Image imgEventEditorHighlighted = ScriptEditor.Properties.Resources.event_editor_button;
-        Image imgCastsEditor = ScriptEditor.Properties.Resources.cast_editor_button_black;
-        Image imgCastsEditorHighlighted = ScriptEditor.Properties.Resources.cast_editor_button;
-        Image imgConditionsEditor = ScriptEditor.Properties.Resources.condition_editor_button_black;
-        Image imgConditionsEditorHighlighted = ScriptEditor.Properties.Resources.condition_editor_button;
-        Image imgGitLink = ScriptEditor.Properties.Resources.gitlink1;
-        Image imgGitLinkHighlighted = ScriptEditor.Properties.Resources.gitlink2;
+        Image imgScriptEditor = Properties.Resources.script_editor_button_black;
+        Image imgScriptEditorHighlighted = Properties.Resources.script_editor_button;
+        Image imgEventEditor = Properties.Resources.event_editor_button_black;
+        Image imgEventEditorHighlighted = Properties.Resources.event_editor_button;
+        Image imgCastsEditor = Properties.Resources.cast_editor_button_black;
+        Image imgCastsEditorHighlighted = Properties.Resources.cast_editor_button;
+        Image imgConditionsEditor = Properties.Resources.condition_editor_button_black;
+        Image imgConditionsEditorHighlighted = Properties.Resources.condition_editor_button;
+        Image imgGitLink = Properties.Resources.gitlink1;
+        Image imgGitLinkHighlighted = Properties.Resources.gitlink2;
+
+        private async Task<bool> LoadData()
+        {
+            IProgress<int> progress = new Progress<int>(value => { LoadingBar.PerformStep(); });
+
+            await Task.Run(() =>
+            {
+                LoadingStatusText.Text = "Loading broadcast texts ...";
+                GameData.LoadBroadcastTexts(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading quests ...";
+                GameData.LoadQuests(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading game objects ...";
+                GameData.LoadGameObjects(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading creatures ...";
+                GameData.LoadCreatures(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading spells ...";
+                GameData.LoadSpells(Program.connString, "alpha_dbc");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading items ...";
+                GameData.LoadItems(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading conditions ...";
+                GameData.LoadCondition(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading areas ...";
+                GameData.LoadAreas(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading factions ...";
+                GameData.LoadFactions(Program.connString, "alpha_dbc");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading faction templates ...";
+                GameData.LoadFactionTemplates(Program.connString, "alpha_dbc");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading creature spells ...";
+                GameData.LoadCreatureSpells(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "";
+                dataLoaded = true;
+            });
+
+            return true;
+        }
 
         public Form1()
         {
             InitializeComponent();
+
+        }
+
+        private void picScriptEditor_MouseEnter(object sender, EventArgs e)
+        {
+            picScriptEditor.BackgroundImage = imgScriptEditorHighlighted;
+            player.Play();
+        }
+
+        private void picScriptEditor_MouseLeave(object sender, EventArgs e)
+        {
+            picScriptEditor.BackgroundImage = imgScriptEditor;
+        }
+
+        private void picEventEditor_MouseEnter(object sender, EventArgs e)
+        {
+            picEventEditor.BackgroundImage = imgEventEditorHighlighted;
+            player.Play();
+        }
+
+        private void picEventEditor_MouseLeave(object sender, EventArgs e)
+        {
+            picEventEditor.BackgroundImage = imgEventEditor;
+        }
+
+        private void picScriptEditor_Click(object sender, EventArgs e)
+        {
+            if (!dataLoaded) return;
+            FormScriptEditor editor = new FormScriptEditor();
+            editor.Show();
+        }
+
+        private void picEventEditor_Click(object sender, EventArgs e)
+        {
+            if (!dataLoaded) return;
+            FormEventEditor editor = new FormEventEditor();
+            editor.Show();
+        }
+
+        private void picGitLink_MouseEnter(object sender, EventArgs e)
+        {
+            picGitLink.BackgroundImage = imgGitLinkHighlighted;
+            player.Play();
+        }
+
+        private void picGitLink_MouseLeave(object sender, EventArgs e)
+        {
+            picGitLink.BackgroundImage = imgGitLink;
+        }
+
+        private void picGitLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/brotalnia/ScriptEditor");
+        }
+
+        private void picCastsEditor_MouseEnter(object sender, EventArgs e)
+        {
+            picCastsEditor.BackgroundImage = imgCastsEditorHighlighted;
+            player.Play();
+        }
+
+        private void picCastsEditor_MouseLeave(object sender, EventArgs e)
+        {
+            picCastsEditor.BackgroundImage = imgCastsEditor;
+        }
+
+        private void picCastsEditor_Click(object sender, EventArgs e)
+        {
+            if (!dataLoaded) return;
+            FormCastsEditor editor = new FormCastsEditor();
+            editor.Show();
+        }
+
+        private void picConditionEditor_MouseEnter(object sender, EventArgs e)
+        {
+            picConditionEditor.BackgroundImage = imgConditionsEditorHighlighted;
+            player.Play();
+        }
+
+        private void picConditionEditor_MouseLeave(object sender, EventArgs e)
+        {
+            picConditionEditor.BackgroundImage = imgConditionsEditor;
+        }
+
+        private void picConditionEditor_Click(object sender, EventArgs e)
+        {
+            if (!dataLoaded) return;
+            FormConditionFinder editor = new FormConditionFinder();
+            editor.ShowStandalone();
+        }
+
+        private async void Form1_Load(object _sender, EventArgs _e)
+        {            
+            await LoadData();
+
+            LoadingBar.Visible = false;
+            menuStrip1.Visible = true;
+            statusStrip1.Visible = false;
 
             // Assign event handlers to menu items
 
@@ -78,7 +220,7 @@ namespace ScriptEditor
             {
                 FormQuestFinder finder = new FormQuestFinder();
                 finder.ShowDialog();
-            };            
+            };
             tsmiSpellFinder.Click += (sender, e) =>
             {
                 FormSpellFinder finder = new FormSpellFinder();
@@ -136,90 +278,7 @@ namespace ScriptEditor
                 uint flags = 0;
                 Helpers.ShowFlagInputDialog(ref flags, "Unit Flags (UF)", GameData.UnitFieldFlagsList);
             };
-        }
 
-        private void picScriptEditor_MouseEnter(object sender, EventArgs e)
-        {
-            picScriptEditor.BackgroundImage = imgScriptEditorHighlighted;
-            player.Play();
-        }
-
-        private void picScriptEditor_MouseLeave(object sender, EventArgs e)
-        {
-            picScriptEditor.BackgroundImage = imgScriptEditor;
-        }
-
-        private void picEventEditor_MouseEnter(object sender, EventArgs e)
-        {
-            picEventEditor.BackgroundImage = imgEventEditorHighlighted;
-            player.Play();
-        }
-
-        private void picEventEditor_MouseLeave(object sender, EventArgs e)
-        {
-            picEventEditor.BackgroundImage = imgEventEditor;
-        }
-
-        private void picScriptEditor_Click(object sender, EventArgs e)
-        {
-            FormScriptEditor editor = new FormScriptEditor();
-            editor.Show();
-        }
-
-        private void picEventEditor_Click(object sender, EventArgs e)
-        {
-            FormEventEditor editor = new FormEventEditor();
-            editor.Show();
-        }
-
-        private void picGitLink_MouseEnter(object sender, EventArgs e)
-        {
-            picGitLink.BackgroundImage = imgGitLinkHighlighted;
-            player.Play();
-        }
-
-        private void picGitLink_MouseLeave(object sender, EventArgs e)
-        {
-            picGitLink.BackgroundImage = imgGitLink;
-        }
-
-        private void picGitLink_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/brotalnia/ScriptEditor");
-        }
-
-        private void picCastsEditor_MouseEnter(object sender, EventArgs e)
-        {
-            picCastsEditor.BackgroundImage = imgCastsEditorHighlighted;
-            player.Play();
-        }
-
-        private void picCastsEditor_MouseLeave(object sender, EventArgs e)
-        {
-            picCastsEditor.BackgroundImage = imgCastsEditor;
-        }
-
-        private void picCastsEditor_Click(object sender, EventArgs e)
-        {
-            FormCastsEditor editor = new FormCastsEditor();
-            editor.Show();
-        }
-
-        private void picConditionEditor_MouseEnter(object sender, EventArgs e)
-        {
-            picConditionEditor.BackgroundImage = imgConditionsEditorHighlighted;
-            player.Play();
-        }
-
-        private void picConditionEditor_MouseLeave(object sender, EventArgs e)
-        {
-            picConditionEditor.BackgroundImage = imgConditionsEditor;
-        }
-
-        private void picConditionEditor_Click(object sender, EventArgs e)
-        {
-            FormConditionFinder editor = new FormConditionFinder();
-            editor.ShowStandalone();
         }
     }
 }

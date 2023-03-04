@@ -39,18 +39,6 @@ namespace ScriptEditor
             // Apply locale settings.
             SetDefaultCulture(new CultureInfo(locale));
 
-            GameData.LoadBroadcastTexts(connString, "alpha_world");
-            GameData.LoadQuests(connString, "alpha_world");
-            GameData.LoadGameObjects(connString, "alpha_world");
-            GameData.LoadCreatures(connString, "alpha_world");
-            GameData.LoadSpells(connString, "alpha_dbc");
-            GameData.LoadItems(connString, "alpha_world");
-            GameData.LoadCondition(connString, "alpha_world");
-            GameData.LoadAreas(connString, "alpha_world");
-            GameData.LoadFactions(connString, "alpha_dbc");
-            GameData.LoadFactionTemplates(connString, "alpha_dbc");
-            GameData.LoadCreatureSpells(connString, "alpha_world");
-
             // Start the main form.
             Application.Run(new Form1());
 
