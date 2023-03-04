@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using MySqlConnector;
 
 namespace ScriptEditor
 {
@@ -13,7 +14,7 @@ namespace ScriptEditor
         // Escape characters that will break the query.
         public static string MySQLEscape(string str)
         {
-            return MySql.Data.MySqlClient.MySqlHelper.EscapeString(str);
+            return MySqlHelper.EscapeString(str);
 
             /*
             return Regex.Replace(str, @"[\x00'""\b\n\r\t\cZ\\%_]",
