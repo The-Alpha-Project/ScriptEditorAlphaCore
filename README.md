@@ -1,6 +1,14 @@
 # ScriptEditor
 Database scripts editor for the alpha-core 0.5.3 alpha emulator, based on brotalnia's ScriptEditor for vMangos.
 
+Changes:
+
+- updated to .NET 4.71
+- old MySQL connector replaced by a current one
+- database queries adapted to alpha-core's multi-database structure
+- in-UI loading progress instead of a console window
+- proper INI file parsing and config.ini file will be created if it doesn't exist
+
 Preview:
 
 ![script editor gui](https://i.imgur.com/zxgHXAv.png)
