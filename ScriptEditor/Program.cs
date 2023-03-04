@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Reflection;
+using IniParser;
+using IniParser.Model;
 
 namespace ScriptEditor
 {
@@ -47,30 +45,39 @@ namespace ScriptEditor
 
         private static void LoadConfig()
         {
-            if (!System.IO.File.Exists(@"config.ini"))
+            if (System.IO.File.Exists(@"config.ini"))
             {
-                MessageBox.Show("Your config file seems to have vanished into the nether! But worry not, i shall use my ultra-safe mind reading device to guess your database connection details. Surely nothing can go wrong, gnomish inventions are renowned for their safety after all!", "No config found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
 
-            string line;
-            System.IO.StreamReader file = new System.IO.StreamReader(@"config.ini");
-            while ((line = file.ReadLine()) != null)
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile(@"config.ini");
+
+                mysqlUser = data.Global["User"];
+                mysqlPass = data.Global["Pass"];
+                mysqlHost = data.Global["Host"];
+                mysqlPort = data.Global["Port"];
+                locale = data.Global["Locale"];
+                highlight = bool.Parse(data.Global["Highlight"]);
+            }
+            else
             {
-                if (line.Contains("User="))
-                    mysqlUser = line.Replace("User=", "");
-                else if (line.Contains("Pass="))
-                    mysqlPass = line.Replace("Pass=", "");
-                else if (line.Contains("Host="))
-                    mysqlHost = line.Replace("Host=", "");
-                else if (line.Contains("Port="))
-                    mysqlPort = line.Replace("Port=", "");
-                else if (line.Contains("DB="))
-                    mysqlDB = line.Replace("DB=", "");
-                else if (line.Contains("Locale="))
-                    locale = line.Replace("Locale=", "");
-                else if (line.Contains("Highlight=true"))
-                    highlight = true;
+                mysqlUser = "root";
+                mysqlPass = "pwd";
+                mysqlHost = "localhost";
+                mysqlPort = "3306";
+                locale = "en-US";
+                highlight = false;
+
+                IniData data = new IniData();
+                data.Global["User"] = mysqlUser;
+                data.Global["Pass"] = mysqlPass;
+                data.Global["Host"] = mysqlHost;
+                data.Global["Port"] = mysqlPort;
+                data.Global["Locale"] = locale;
+                data.Global["Highlight"] = highlight.ToString();
+
+                var parser = new FileIniDataParser();
+                parser.WriteFile(@"config.ini", data);
+                MessageBox.Show("A new config.ini file with default values has been created. If database connection fails please review it and change values if needed.");
             }
 
             connString = "Server=" + mysqlHost + ";Database={0};Port=" + mysqlPort + ";Uid=" + mysqlUser + ";Pwd=" + mysqlPass + ";";
