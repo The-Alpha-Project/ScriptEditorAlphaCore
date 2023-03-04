@@ -1,5 +1,5 @@
 # ScriptEditor
-Database scripts editor for the VMaNGOS emulator.
+Database scripts editor for the alpha-core 0.5.3 alpha emulator, based on brotalnia's ScriptEditor for vMangos.
 
 Preview:
 ![script editor gui](https://i.imgur.com/zxgHXAv.png)
