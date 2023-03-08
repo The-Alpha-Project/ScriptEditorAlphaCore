@@ -668,7 +668,7 @@ namespace ScriptEditor
 
             MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `ID`, `EffectMiscValue_1`, `EffectMiscValue_2`, `EffectMiscValue_3`, `Name_enUS`, `Description_enUS` FROM `spell` ORDER BY `ID`";
+            command.CommandText = "SELECT `ID`, `EffectMiscValue_1`, `EffectMiscValue_2`, `EffectMiscValue_3`, `Name_enUS`, `Description_enUS` FROM `Spell` ORDER BY `ID`";
             try
             {
                 conn.Open();
@@ -800,7 +800,7 @@ namespace ScriptEditor
 
             MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `id`, `Name_enUS` AS name FROM `faction` ORDER BY `id`";
+            command.CommandText = "SELECT `id`, `Name_enUS` AS name FROM `Faction` ORDER BY `id`";
             try
             {
                 conn.Open();
@@ -825,7 +825,7 @@ namespace ScriptEditor
 
             MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `id`, `Faction` AS faction_id FROM `factiontemplate` ORDER BY `id`";
+            command.CommandText = "SELECT `id`, `Faction` AS faction_id FROM `FactionTemplate` ORDER BY `id`";
             try
             {
                 conn.Open();
