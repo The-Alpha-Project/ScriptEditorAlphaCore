@@ -79,6 +79,7 @@
             // 
             this.picScriptEditor.BackColor = System.Drawing.Color.Transparent;
             this.picScriptEditor.BackgroundImage = global::ScriptEditor.Properties.Resources.script_editor_button_black;
+            this.picScriptEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.picScriptEditor.InitialImage = null;
             this.picScriptEditor.Location = new System.Drawing.Point(17, 126);
             this.picScriptEditor.Name = "picScriptEditor";
@@ -93,6 +94,7 @@
             // 
             this.picEventEditor.BackColor = System.Drawing.Color.Transparent;
             this.picEventEditor.BackgroundImage = global::ScriptEditor.Properties.Resources.event_editor_button_black;
+            this.picEventEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.picEventEditor.InitialImage = null;
             this.picEventEditor.Location = new System.Drawing.Point(175, 126);
             this.picEventEditor.Name = "picEventEditor";
@@ -120,6 +122,7 @@
             // 
             this.picCastsEditor.BackColor = System.Drawing.Color.Transparent;
             this.picCastsEditor.BackgroundImage = global::ScriptEditor.Properties.Resources.cast_editor_button_black;
+            this.picCastsEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.picCastsEditor.InitialImage = null;
             this.picCastsEditor.Location = new System.Drawing.Point(17, 233);
             this.picCastsEditor.Name = "picCastsEditor";
@@ -134,6 +137,7 @@
             // 
             this.picConditionEditor.BackColor = System.Drawing.Color.Transparent;
             this.picConditionEditor.BackgroundImage = global::ScriptEditor.Properties.Resources.condition_editor_button_black;
+            this.picConditionEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.picConditionEditor.InitialImage = null;
             this.picConditionEditor.Location = new System.Drawing.Point(175, 233);
             this.picConditionEditor.Name = "picConditionEditor";
@@ -172,25 +176,25 @@
             // tsmiScripts
             // 
             this.tsmiScripts.Name = "tsmiScripts";
-            this.tsmiScripts.Size = new System.Drawing.Size(180, 22);
+            this.tsmiScripts.Size = new System.Drawing.Size(156, 22);
             this.tsmiScripts.Text = "Scripts";
             // 
             // tsmiCreatureEvents
             // 
             this.tsmiCreatureEvents.Name = "tsmiCreatureEvents";
-            this.tsmiCreatureEvents.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCreatureEvents.Size = new System.Drawing.Size(156, 22);
             this.tsmiCreatureEvents.Text = "Creature Events";
             // 
             // tsmiCreatureSpells
             // 
             this.tsmiCreatureSpells.Name = "tsmiCreatureSpells";
-            this.tsmiCreatureSpells.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCreatureSpells.Size = new System.Drawing.Size(156, 22);
             this.tsmiCreatureSpells.Text = "Creature Spells";
             // 
             // tsmiConditions
             // 
             this.tsmiConditions.Name = "tsmiConditions";
-            this.tsmiConditions.Size = new System.Drawing.Size(180, 22);
+            this.tsmiConditions.Size = new System.Drawing.Size(156, 22);
             this.tsmiConditions.Text = "Conditions";
             // 
             // tsmiFinders
@@ -214,67 +218,67 @@
             // tsmiAreaFinder
             // 
             this.tsmiAreaFinder.Name = "tsmiAreaFinder";
-            this.tsmiAreaFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAreaFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiAreaFinder.Text = "Area";
             // 
             // tsmiCreatureFinder
             // 
             this.tsmiCreatureFinder.Name = "tsmiCreatureFinder";
-            this.tsmiCreatureFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCreatureFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiCreatureFinder.Text = "Creature";
             // 
             // tsmiEventFinder
             // 
             this.tsmiEventFinder.Name = "tsmiEventFinder";
-            this.tsmiEventFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEventFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiEventFinder.Text = "Event Finder";
             // 
             // tsmiFactionFinder
             // 
             this.tsmiFactionFinder.Name = "tsmiFactionFinder";
-            this.tsmiFactionFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiFactionFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiFactionFinder.Text = "Faction";
             // 
             // tsmiFactionTemplateFinder
             // 
             this.tsmiFactionTemplateFinder.Name = "tsmiFactionTemplateFinder";
-            this.tsmiFactionTemplateFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiFactionTemplateFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiFactionTemplateFinder.Text = "Faction Template";
             // 
             // tsmiGameObjectFinder
             // 
             this.tsmiGameObjectFinder.Name = "tsmiGameObjectFinder";
-            this.tsmiGameObjectFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiGameObjectFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiGameObjectFinder.Text = "Game Object";
             // 
             // tsmiItemFinder
             // 
             this.tsmiItemFinder.Name = "tsmiItemFinder";
-            this.tsmiItemFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiItemFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiItemFinder.Text = "Item";
             // 
             // tsmiQuestFinder
             // 
             this.tsmiQuestFinder.Name = "tsmiQuestFinder";
-            this.tsmiQuestFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiQuestFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiQuestFinder.Text = "Quest";
             // 
             // tsmiSpellFinder
             // 
             this.tsmiSpellFinder.Name = "tsmiSpellFinder";
-            this.tsmiSpellFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSpellFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiSpellFinder.Text = "Spell";
             // 
             // tsmiTaxiFinder
             // 
             this.tsmiTaxiFinder.Name = "tsmiTaxiFinder";
-            this.tsmiTaxiFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTaxiFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiTaxiFinder.Text = "Taxi";
             // 
             // tsmiTextFinder
             // 
             this.tsmiTextFinder.Name = "tsmiTextFinder";
-            this.tsmiTextFinder.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTextFinder.Size = new System.Drawing.Size(164, 22);
             this.tsmiTextFinder.Text = "Broadcast Text";
             // 
             // tsmiHelpers
