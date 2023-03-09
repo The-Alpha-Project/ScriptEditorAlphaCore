@@ -8,9 +8,27 @@ Changes:
 - database queries adapted to alpha-core's multi-database structure
 - in-UI loading progress instead of a console window
 - proper INI file parsing and config.ini file will be created if it doesn't exist
+- slightly improved script editor including specific handling of quest start/end scripts
 
-Preview:
+# Installation
 
-![script editor gui](https://i.imgur.com/zxgHXAv.png)
+Download the latest release from [Releases](https://github.com/mindphluxnet/ScriptEditorAlphaCore/releases) and unpack the archive to any directory. 
 
-The point of this software is to make scripting content more accessible by removing the need to know anything about programming or SQL syntax. All the script information is presented visually with proper field names for each parameter based on the command and previews for things such as texts. The editor will automatically generate the proper SQL queries when you are done working, so you may easily pull request your changes.
+# Configuration
+
+Open ```config.ini``` using a text editor. You should see the following content:
+
+```
+User = root
+Pass = pwd
+Host = localhost
+Port = 3306
+Locale = en-US
+Highlight = False
+```
+
+Set your database user name and password and the database host name if needed. Save the file.
+
+# Usage
+
+Run ```ScriptEditor.exe```
