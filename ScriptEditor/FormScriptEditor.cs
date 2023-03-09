@@ -26,6 +26,9 @@ namespace ScriptEditor
         // Used to prevent control events triggering when resetting data.
         bool dontUpdate = false;
 
+        // Set to True if the selected table is quest related.
+        bool isQuestRelated = false;
+
         // Command Type Names
         private string[] CommandTypeNames =
         {
@@ -297,17 +300,36 @@ namespace ScriptEditor
         // Generates SQL query based on script actions list.
         private string GenerateScriptQuery()
         {
-            string query = "DELETE FROM `" + currentScriptTable + "` WHERE `id`=" + currentScriptId.ToString() + ";\n";
-            query += "INSERT INTO `" + currentScriptTable + "` (`id`, `delay`, `priority`, `command`, `datalong`, `datalong2`, `datalong3`, `datalong4`, `target_param1`, `target_param2`, `target_type`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `condition_id`, `comments`) VALUES\n";
-            for (int i = 0; i < lstActions.Items.Count; i++)
+            string query = "";
+            if (isQuestRelated)
             {
-                // Get the associated ScriptAction.
-                ListViewItem lvi = lstActions.Items[i];
-                ScriptAction currentAction = (ScriptAction)lvi.Tag;
+                query = "DELETE FROM `" + currentScriptTable + "` WHERE `quest_id`=" + currentScriptId.ToString() + ";\n";
+                query += "INSERT INTO `" + currentScriptTable + "` (`id`, `quest_id`, `delay`, `priority`, `command`, `datalong`, `datalong2`, `datalong3`, `datalong4`, `target_param1`, `target_param2`, `target_type`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `condition_id`, `comments`) VALUES\n";
+                for (int i = 0; i < lstActions.Items.Count; i++)
+                {
+                    // Get the associated ScriptAction.
+                    ListViewItem lvi = lstActions.Items[i];
+                    ScriptAction currentAction = (ScriptAction)lvi.Tag;
 
-                if (i > 0)
-                    query += ",\n";
-                query += "(" + currentAction.Id.ToString() + ", " + currentAction.Delay.ToString() + ", " + currentAction.Priority.ToString() + ", " + currentAction.Command.ToString() + ", " + currentAction.Datalong.ToString() + ", " + currentAction.Datalong2.ToString() + ", " + currentAction.Datalong3.ToString() + ", " + currentAction.Datalong4.ToString() + ", " + currentAction.TargetParam1.ToString() + ", " + currentAction.TargetParam2.ToString() + ", " + currentAction.TargetType.ToString() + ", " + currentAction.DataFlags.ToString() + ", " + currentAction.Dataint.ToString() + ", " + currentAction.Dataint2.ToString() + ", " + currentAction.Dataint3.ToString() + ", " + currentAction.Dataint4.ToString() + ", " + currentAction.X.ToString().Replace(',', '.') + ", " + currentAction.Y.ToString().Replace(',', '.') + ", " + currentAction.Z.ToString().Replace(',', '.') + ", " + currentAction.O.ToString().Replace(',', '.') + ", " + currentAction.ConditionId.ToString() + ", '" + Helpers.MySQLEscape(currentAction.Comments) + "')";
+                    if (i > 0)
+                        query += ",\n";
+                    query += "(" + currentAction.Id.ToString() + ", " + currentAction.QuestId.ToString() + ", " + currentAction.Delay.ToString() + ", " + currentAction.Priority.ToString() + ", " + currentAction.Command.ToString() + ", " + currentAction.Datalong.ToString() + ", " + currentAction.Datalong2.ToString() + ", " + currentAction.Datalong3.ToString() + ", " + currentAction.Datalong4.ToString() + ", " + currentAction.TargetParam1.ToString() + ", " + currentAction.TargetParam2.ToString() + ", " + currentAction.TargetType.ToString() + ", " + currentAction.DataFlags.ToString() + ", " + currentAction.Dataint.ToString() + ", " + currentAction.Dataint2.ToString() + ", " + currentAction.Dataint3.ToString() + ", " + currentAction.Dataint4.ToString() + ", " + currentAction.X.ToString().Replace(',', '.') + ", " + currentAction.Y.ToString().Replace(',', '.') + ", " + currentAction.Z.ToString().Replace(',', '.') + ", " + currentAction.O.ToString().Replace(',', '.') + ", " + currentAction.ConditionId.ToString() + ", '" + Helpers.MySQLEscape(currentAction.Comments) + "')";
+                }
+            }
+            else
+            {
+                query = "DELETE FROM `" + currentScriptTable + "` WHERE `id`=" + currentScriptId.ToString() + ";\n";
+                query += "INSERT INTO `" + currentScriptTable + "` (`id`, `delay`, `priority`, `command`, `datalong`, `datalong2`, `datalong3`, `datalong4`, `target_param1`, `target_param2`, `target_type`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `condition_id`, `comments`) VALUES\n";
+                for (int i = 0; i < lstActions.Items.Count; i++)
+                {
+                    // Get the associated ScriptAction.
+                    ListViewItem lvi = lstActions.Items[i];
+                    ScriptAction currentAction = (ScriptAction)lvi.Tag;
+
+                    if (i > 0)
+                        query += ",\n";
+                    query += "(" + currentAction.Id.ToString() + ", " + currentAction.Delay.ToString() + ", " + currentAction.Priority.ToString() + ", " + currentAction.Command.ToString() + ", " + currentAction.Datalong.ToString() + ", " + currentAction.Datalong2.ToString() + ", " + currentAction.Datalong3.ToString() + ", " + currentAction.Datalong4.ToString() + ", " + currentAction.TargetParam1.ToString() + ", " + currentAction.TargetParam2.ToString() + ", " + currentAction.TargetType.ToString() + ", " + currentAction.DataFlags.ToString() + ", " + currentAction.Dataint.ToString() + ", " + currentAction.Dataint2.ToString() + ", " + currentAction.Dataint3.ToString() + ", " + currentAction.Dataint4.ToString() + ", " + currentAction.X.ToString().Replace(',', '.') + ", " + currentAction.Y.ToString().Replace(',', '.') + ", " + currentAction.Z.ToString().Replace(',', '.') + ", " + currentAction.O.ToString().Replace(',', '.') + ", " + currentAction.ConditionId.ToString() + ", '" + Helpers.MySQLEscape(currentAction.Comments) + "')";
+                }
             }
             return query + ";\n";
         }
@@ -372,7 +394,7 @@ namespace ScriptEditor
 
             MySqlConnection conn = new MySqlConnection(string.Format(Program.connString, "alpha_world"));
             MySqlCommand command = conn.CreateCommand();
-            if (table_name == "quest_start_scripts" || table_name == "quest_end_scripts")
+            if (isQuestRelated)
             {
                 command.CommandText = "SELECT id, quest_id, delay, priority, command, datalong, datalong2, datalong3, datalong4, target_param1, target_param2, target_type, data_flags, dataint, dataint2, dataint3, dataint4, x, y, z, o, condition_id, comments FROM " + table_name + " WHERE quest_id=" + script_id.ToString() + " ORDER BY delay, priority";
             }
@@ -4432,10 +4454,12 @@ namespace ScriptEditor
         {
             if (cmbTable.GetItemText(cmbTable.SelectedIndex) == "8" || cmbTable.GetItemText(cmbTable.SelectedIndex) == "7")
             {
+                isQuestRelated = true;
                 lblScriptId.Text = "Quest Id";
             }
             else
             {
+                isQuestRelated = false;
                 lblScriptId.Text = "Id";
             }
         }
