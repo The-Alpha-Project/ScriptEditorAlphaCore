@@ -372,7 +372,14 @@ namespace ScriptEditor
 
             MySqlConnection conn = new MySqlConnection(string.Format(Program.connString, "alpha_world"));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT id, delay, priority, command, datalong, datalong2, datalong3, datalong4, target_param1, target_param2, target_type, data_flags, dataint, dataint2, dataint3, dataint4, x, y, z, o, condition_id, comments FROM " + table_name + " WHERE id=" + script_id.ToString() + " ORDER BY delay, priority";
+            if (table_name == "quest_start_scripts" || table_name == "quest_end_scripts")
+            {
+                command.CommandText = "SELECT id, quest_id, delay, priority, command, datalong, datalong2, datalong3, datalong4, target_param1, target_param2, target_type, data_flags, dataint, dataint2, dataint3, dataint4, x, y, z, o, condition_id, comments FROM " + table_name + " WHERE quest_id=" + script_id.ToString() + " ORDER BY delay, priority";
+            }
+            else
+            {
+                command.CommandText = "SELECT id, delay, priority, command, datalong, datalong2, datalong3, datalong4, target_param1, target_param2, target_type, data_flags, dataint, dataint2, dataint3, dataint4, x, y, z, o, condition_id, comments FROM " + table_name + " WHERE id=" + script_id.ToString() + " ORDER BY delay, priority";
+            }
             try
             {
                 conn.Open();
@@ -382,7 +389,16 @@ namespace ScriptEditor
                 {
                     ListViewItem lvi = new ListViewItem();
 
-                    ScriptAction action = new ScriptAction(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetUInt32(2), reader.GetUInt32(3), reader.GetUInt32(4), reader.GetUInt32(5), reader.GetUInt32(6), reader.GetUInt32(7), reader.GetUInt32(8), reader.GetUInt32(9), reader.GetUInt32(10), reader.GetUInt32(11), reader.GetInt32(12), reader.GetInt32(13), reader.GetInt32(14), reader.GetInt32(15), reader.GetFloat(16), reader.GetFloat(17), reader.GetFloat(18), reader.GetFloat(19), reader.GetUInt32(20), reader[21].ToString());
+                    ScriptAction action;
+
+                    if (table_name == "quest_start_scripts" || table_name == "quest_end_scripts")
+                    {
+                        action = new ScriptAction(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetUInt32(2), reader.GetUInt32(3), reader.GetUInt32(4), reader.GetUInt32(5), reader.GetUInt32(6), reader.GetUInt32(7), reader.GetUInt32(8), reader.GetUInt32(9), reader.GetUInt32(10), reader.GetUInt32(11), reader.GetUInt32(12), reader.GetInt32(13), reader.GetInt32(14), reader.GetInt32(15), reader.GetInt32(16), reader.GetFloat(17), reader.GetFloat(18), reader.GetFloat(19), reader.GetFloat(20), reader.GetUInt32(21), reader[22].ToString());
+                    }
+                    else
+                    {
+                        action = new ScriptAction(reader.GetUInt32(0), 0, reader.GetUInt32(1), reader.GetUInt32(2), reader.GetUInt32(3), reader.GetUInt32(4), reader.GetUInt32(5), reader.GetUInt32(6), reader.GetUInt32(7), reader.GetUInt32(8), reader.GetUInt32(9), reader.GetUInt32(10), reader.GetUInt32(11), reader.GetInt32(12), reader.GetInt32(13), reader.GetInt32(14), reader.GetInt32(15), reader.GetFloat(16), reader.GetFloat(17), reader.GetFloat(18), reader.GetFloat(19), reader.GetUInt32(20), reader[21].ToString());
+                    }
 
                     // We show only delay, command id and comment in the listview.
                     lvi.Text = action.Delay.ToString();
@@ -2707,7 +2723,7 @@ namespace ScriptEditor
                 ListViewItem newItem = new ListViewItem();
 
                 // Copy values of selected action.
-                ScriptAction newAction = new ScriptAction(currentScriptId, currentAction.Delay, currentAction.Priority, currentAction.Command, currentAction.Datalong, currentAction.Datalong2, currentAction.Datalong3, currentAction.Datalong4, currentAction.TargetParam1, currentAction.TargetParam2, currentAction.TargetType, currentAction.DataFlags, currentAction.Dataint, currentAction.Dataint2, currentAction.Dataint3, currentAction.Dataint4, currentAction.X, currentAction.Y, currentAction.Z, currentAction.O, currentAction.ConditionId, currentAction.Comments + " - Copy");
+                ScriptAction newAction = new ScriptAction(currentScriptId, 0, currentAction.Delay, currentAction.Priority, currentAction.Command, currentAction.Datalong, currentAction.Datalong2, currentAction.Datalong3, currentAction.Datalong4, currentAction.TargetParam1, currentAction.TargetParam2, currentAction.TargetType, currentAction.DataFlags, currentAction.Dataint, currentAction.Dataint2, currentAction.Dataint3, currentAction.Dataint4, currentAction.X, currentAction.Y, currentAction.Z, currentAction.O, currentAction.ConditionId, currentAction.Comments + " - Copy");
 
                 // We show only delay, command id and comment in the listview.
                 newItem.Text = newAction.Delay.ToString();
@@ -4410,6 +4426,18 @@ namespace ScriptEditor
         private void chkJoinCreatureGroup128_CheckedChanged(object sender, EventArgs e)
         {
             SetScriptFlagsFromCheckbox(chkJoinCreatureGroup128, "Datalong", 128);
+        }
+
+        private void cmbTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTable.GetItemText(cmbTable.SelectedIndex) == "8" || cmbTable.GetItemText(cmbTable.SelectedIndex) == "7")
+            {
+                lblScriptId.Text = "Quest Id";
+            }
+            else
+            {
+                lblScriptId.Text = "Id";
+            }
         }
     }
 

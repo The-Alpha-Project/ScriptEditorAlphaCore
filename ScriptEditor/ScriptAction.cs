@@ -8,6 +8,7 @@ namespace ScriptEditor
     public class ScriptAction
     {
         public uint Id;
+        public uint QuestId;
         public uint Delay;
         public uint Priority;
         public uint Command;
@@ -29,9 +30,10 @@ namespace ScriptEditor
         public float O;
         public uint ConditionId;
         public string Comments;
-        public ScriptAction(uint id, uint delay, uint priority, uint command, uint datalong, uint datalong2, uint datalong3, uint datalong4, uint targetparam1, uint targetparam2, uint targettype, uint dataflags, int dataint, int dataint2, int dataint3, int dataint4, float x, float y, float z, float o, uint conditionid, string comments)
+        public ScriptAction(uint id, uint quest_id, uint delay, uint priority, uint command, uint datalong, uint datalong2, uint datalong3, uint datalong4, uint targetparam1, uint targetparam2, uint targettype, uint dataflags, int dataint, int dataint2, int dataint3, int dataint4, float x, float y, float z, float o, uint conditionid, string comments)
         {
             Id = id;
+            QuestId = quest_id;
             Delay = delay;
             Priority = priority;
             Command = command;

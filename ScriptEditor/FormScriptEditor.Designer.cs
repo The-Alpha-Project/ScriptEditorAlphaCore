@@ -685,6 +685,7 @@
             this.cmbTable.Name = "cmbTable";
             this.cmbTable.Size = new System.Drawing.Size(154, 21);
             this.cmbTable.TabIndex = 2;
+            this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
             // 
             // btnFind
             // 
