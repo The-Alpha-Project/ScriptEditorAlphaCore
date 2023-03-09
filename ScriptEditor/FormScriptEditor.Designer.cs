@@ -651,11 +651,12 @@
             // columnCommand
             // 
             this.columnCommand.Text = "Command";
+            this.columnCommand.Width = 120;
             // 
             // columnComment
             // 
             this.columnComment.Text = "Comment";
-            this.columnComment.Width = 240;
+            this.columnComment.Width = 180;
             // 
             // lblId
             // 

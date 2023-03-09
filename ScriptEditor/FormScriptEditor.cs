@@ -402,7 +402,7 @@ namespace ScriptEditor
 
                     // We show only delay, command id and comment in the listview.
                     lvi.Text = action.Delay.ToString();
-                    lvi.SubItems.Add(action.Command.ToString());
+                    lvi.SubItems.Add(CommandTypeNames[action.Command]); 
                     lvi.SubItems.Add(action.Comments);
 
                     // Save the ScriptAction to the Tag.
