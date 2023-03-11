@@ -1367,5 +1367,18 @@ namespace ScriptEditor
         {
             SetScriptFieldFromTextbox(txtHitByAuraRepeatMax, "Param4");
         }
+
+        private void btnLookup_Click(object sender, EventArgs e)
+        {
+            using(FormCreatureFinder _form = new FormCreatureFinder())
+            {
+                _form.ShowDialog();                
+                if(_form.ReturnValue > 0)
+                {
+                    txtCreatureId.Text = _form.ReturnValue.ToString();
+                    btnFind.PerformClick();
+                }
+            }
+        }
     }
 }

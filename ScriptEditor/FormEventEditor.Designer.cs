@@ -157,6 +157,7 @@
             this.lblHitByAuraType = new System.Windows.Forms.Label();
             this.lblHitByAuraUnused = new System.Windows.Forms.Label();
             this.lblHitByAuraTooltip = new System.Windows.Forms.Label();
+            this.btnLookup = new System.Windows.Forms.Button();
             this.grpGeneral.SuspendLayout();
             this.grpEventFlags.SuspendLayout();
             this.frmEventTimerCombat.SuspendLayout();
@@ -207,7 +208,7 @@
             // 
             // txtCreatureId
             // 
-            this.txtCreatureId.Location = new System.Drawing.Point(657, 28);
+            this.txtCreatureId.Location = new System.Drawing.Point(576, 28);
             this.txtCreatureId.Name = "txtCreatureId";
             this.txtCreatureId.Size = new System.Drawing.Size(190, 20);
             this.txtCreatureId.TabIndex = 1;
@@ -226,7 +227,7 @@
             // lblCreatureId
             // 
             this.lblCreatureId.AutoSize = true;
-            this.lblCreatureId.Location = new System.Drawing.Point(590, 32);
+            this.lblCreatureId.Location = new System.Drawing.Point(509, 32);
             this.lblCreatureId.Name = "lblCreatureId";
             this.lblCreatureId.Size = new System.Drawing.Size(62, 13);
             this.lblCreatureId.TabIndex = 3;
@@ -1443,11 +1444,22 @@
             this.lblHitByAuraTooltip.Text = "Expires when the creature is hit by a spell that applies an aura of a specific ty" +
     "pe.";
             // 
+            // btnLookup
+            // 
+            this.btnLookup.Location = new System.Drawing.Point(772, 26);
+            this.btnLookup.Name = "btnLookup";
+            this.btnLookup.Size = new System.Drawing.Size(75, 23);
+            this.btnLookup.TabIndex = 72;
+            this.btnLookup.Text = "Lookup";
+            this.btnLookup.UseVisualStyleBackColor = true;
+            this.btnLookup.Click += new System.EventHandler(this.btnLookup_Click);
+            // 
             // FormEventEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 600);
+            this.Controls.Add(this.btnLookup);
             this.Controls.Add(this.frmEventHitByAura);
             this.Controls.Add(this.frmUnsupportedEvent);
             this.Controls.Add(this.frmEventKilledUnit);
@@ -1638,5 +1650,6 @@
         private System.Windows.Forms.Label lblHitByAuraType;
         private System.Windows.Forms.Label lblHitByAuraUnused;
         private System.Windows.Forms.Label lblHitByAuraTooltip;
+        private System.Windows.Forms.Button btnLookup;
     }
 }
