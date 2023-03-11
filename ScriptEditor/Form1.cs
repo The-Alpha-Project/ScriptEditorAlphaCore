@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Drawing;
 using System.Media;
 using System.Threading.Tasks;
@@ -24,9 +25,25 @@ namespace ScriptEditor
         Image imgGitLink = Properties.Resources.gitlink1;
         Image imgGitLinkHighlighted = Properties.Resources.gitlink2;
 
+        private bool CheckDBConnection()
+        {
+            MySqlConnection conn = new MySqlConnection(string.Format(Program.connString, "alpha_world"));            
+            try
+            {
+                conn.Open();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to connect to the database server. MySQL error message:\n\n" + ex.Message, "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false;
+        }
+
         private async Task<bool> LoadData()
         {
-            IProgress<int> progress = new Progress<int>(value => { LoadingBar.PerformStep(); });
+            IProgress<int> progress = new Progress<int>(value => { LoadingBar.PerformStep(); });            
 
             await Task.Run(() =>
             {
@@ -165,7 +182,9 @@ namespace ScriptEditor
         }
 
         private async void Form1_Load(object _sender, EventArgs _e)
-        {            
+        {
+            if (!CheckDBConnection()) Application.Exit();
+
             await LoadData();
 
             LoadingBar.Visible = false;
