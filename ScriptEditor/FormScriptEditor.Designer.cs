@@ -561,6 +561,8 @@
             this.txtJoinCreatureGroupAngle = new System.Windows.Forms.TextBox();
             this.txtJoinCreatureGroupDistance = new System.Windows.Forms.TextBox();
             this.lblJoinCreatureGroupTooltip = new System.Windows.Forms.Label();
+            this.btnLookup = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.grpGeneral.SuspendLayout();
             this.grpDataFlags.SuspendLayout();
             this.grpBuddy.SuspendLayout();
@@ -622,6 +624,7 @@
             this.frmCommandSummonObject.SuspendLayout();
             this.frmCommandJoinCreatureGroup.SuspendLayout();
             this.joinCreatureGroupsFlagsGroupBox.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstActions
@@ -682,7 +685,7 @@
             "quest_end_scripts",
             "quest_start_scripts",
             "spell_scripts"});
-            this.cmbTable.Location = new System.Drawing.Point(672, 24);
+            this.cmbTable.Location = new System.Drawing.Point(241, 3);
             this.cmbTable.Name = "cmbTable";
             this.cmbTable.Size = new System.Drawing.Size(154, 21);
             this.cmbTable.TabIndex = 2;
@@ -690,7 +693,7 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(833, 22);
+            this.btnFind.Location = new System.Drawing.Point(479, 3);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(72, 23);
             this.btnFind.TabIndex = 3;
@@ -700,7 +703,7 @@
             // 
             // txtScriptId
             // 
-            this.txtScriptId.Location = new System.Drawing.Point(590, 25);
+            this.txtScriptId.Location = new System.Drawing.Point(116, 3);
             this.txtScriptId.Name = "txtScriptId";
             this.txtScriptId.Size = new System.Drawing.Size(76, 20);
             this.txtScriptId.TabIndex = 4;
@@ -1128,21 +1131,21 @@
             // 
             // lblScriptId
             // 
-            this.lblScriptId.AutoSize = true;
-            this.lblScriptId.Location = new System.Drawing.Point(587, 9);
+            this.lblScriptId.Location = new System.Drawing.Point(25, 0);
             this.lblScriptId.Name = "lblScriptId";
-            this.lblScriptId.Size = new System.Drawing.Size(19, 13);
+            this.lblScriptId.Size = new System.Drawing.Size(85, 29);
             this.lblScriptId.TabIndex = 9;
             this.lblScriptId.Text = "Id:";
+            this.lblScriptId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblTable
             // 
-            this.lblTable.AutoSize = true;
-            this.lblTable.Location = new System.Drawing.Point(669, 9);
+            this.lblTable.Location = new System.Drawing.Point(198, 0);
             this.lblTable.Name = "lblTable";
-            this.lblTable.Size = new System.Drawing.Size(37, 13);
+            this.lblTable.Size = new System.Drawing.Size(37, 29);
             this.lblTable.TabIndex = 10;
-            this.lblTable.Text = "Table:";
+            this.lblTable.Text = "Table";
+            this.lblTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmCommandEmote
             // 
@@ -6138,11 +6141,37 @@
             this.lblJoinCreatureGroupTooltip.Text = "The source Creature joins the target Creature\'s group. If the target is not in a " +
     "group, then a new group is created with the target as leader.";
             // 
+            // btnLookup
+            // 
+            this.btnLookup.Location = new System.Drawing.Point(401, 3);
+            this.btnLookup.Name = "btnLookup";
+            this.btnLookup.Size = new System.Drawing.Size(72, 23);
+            this.btnLookup.TabIndex = 66;
+            this.btnLookup.Text = "Lookup";
+            this.btnLookup.UseVisualStyleBackColor = true;
+            this.btnLookup.Visible = false;
+            this.btnLookup.Click += new System.EventHandler(this.btnLookup_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnFind);
+            this.flowLayoutPanel1.Controls.Add(this.btnLookup);
+            this.flowLayoutPanel1.Controls.Add(this.cmbTable);
+            this.flowLayoutPanel1.Controls.Add(this.lblTable);
+            this.flowLayoutPanel1.Controls.Add(this.txtScriptId);
+            this.flowLayoutPanel1.Controls.Add(this.lblScriptId);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(352, 25);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(554, 29);
+            this.flowLayoutPanel1.TabIndex = 67;
+            // 
             // FormScriptEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 620);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.frmCommandJoinCreatureGroup);
             this.Controls.Add(this.frmCommandSummonObject);
             this.Controls.Add(this.frmCommandUnknown);
@@ -6195,15 +6224,10 @@
             this.Controls.Add(this.frmCommandMoveTo);
             this.Controls.Add(this.frmCommandFieldSet);
             this.Controls.Add(this.frmCommandEmote);
-            this.Controls.Add(this.lblTable);
-            this.Controls.Add(this.lblScriptId);
             this.Controls.Add(this.btnActionAdd);
             this.Controls.Add(this.btnActionDelete);
             this.Controls.Add(this.frmCommandTalk);
             this.Controls.Add(this.grpGeneral);
-            this.Controls.Add(this.txtScriptId);
-            this.Controls.Add(this.btnFind);
-            this.Controls.Add(this.cmbTable);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.lstActions);
             this.Controls.Add(this.lblNoAction);
@@ -6336,6 +6360,8 @@
             this.frmCommandJoinCreatureGroup.PerformLayout();
             this.joinCreatureGroupsFlagsGroupBox.ResumeLayout(false);
             this.joinCreatureGroupsFlagsGroupBox.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6875,6 +6901,8 @@
         private System.Windows.Forms.CheckBox chkSkipMissingTargets;
         private System.Windows.Forms.Button btnStartScriptForAllEdit;
         private System.Windows.Forms.CheckBox chkPlaySoundFlags4;
+        private System.Windows.Forms.Button btnLookup;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 

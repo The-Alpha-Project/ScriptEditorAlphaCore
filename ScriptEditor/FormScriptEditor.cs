@@ -4449,11 +4449,26 @@ namespace ScriptEditor
             {
                 isQuestRelated = true;
                 lblScriptId.Text = "Quest Id";
+                btnLookup.Visible = true;
             }
             else
             {
                 isQuestRelated = false;
                 lblScriptId.Text = "Id";
+                btnLookup.Visible = false;
+            }
+        }
+
+        private void btnLookup_Click(object sender, EventArgs e)
+        {
+            using (FormQuestFinder _form = new FormQuestFinder())
+            {
+                _form.ShowDialog();
+                if (_form.ReturnValue > 0)
+                {
+                    txtScriptId.Text = _form.ReturnValue.ToString();
+                    btnFind.PerformClick();
+                }
             }
         }
     }
