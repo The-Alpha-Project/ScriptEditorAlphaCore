@@ -9,6 +9,7 @@ Changes:
 - in-UI loading progress instead of a console window
 - proper INI file parsing and config.ini file will be created if it doesn't exist
 - slightly improved script editor including specific handling of quest start/end scripts
+- other QoL improvements
 
 # Installation
 
