@@ -1380,5 +1380,10 @@ namespace ScriptEditor
                 }
             }
         }
+
+        private void FormEventEditor_Shown(object sender, EventArgs e)
+        {
+            txtCreatureId.Focus();
+        }
     }
 }

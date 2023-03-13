@@ -6238,6 +6238,7 @@
             this.Text = "Script Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormScriptEditor_FormClosing);
             this.Load += new System.EventHandler(this.FormScriptEditor_Load);
+            this.Shown += new System.EventHandler(this.FormScriptEditor_Shown);
             this.grpGeneral.ResumeLayout(false);
             this.grpGeneral.PerformLayout();
             this.grpDataFlags.ResumeLayout(false);

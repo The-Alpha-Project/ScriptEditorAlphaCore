@@ -80,6 +80,7 @@
             this.ClientSize = new System.Drawing.Size(672, 393);
             this.Name = "FormEventFinder";
             this.Text = "Event Finder";
+            this.Shown += new System.EventHandler(this.FormEventFinder_Shown);
             this.ResizeEnd += new System.EventHandler(this.FormEventFinder_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();

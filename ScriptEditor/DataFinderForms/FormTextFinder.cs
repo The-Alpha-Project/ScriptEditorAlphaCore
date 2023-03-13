@@ -91,5 +91,10 @@ namespace ScriptEditor
         {
             lstData.Columns[1].Width = lstData.ClientSize.Width - lstData.Columns[0].Width - lstData.Columns[2].Width - lstData.Columns[3].Width;
         }
+
+        private void FormTextFinder_Shown(object sender, EventArgs e)
+        {
+            txtSearch.Focus();
+        }
     }
 }

@@ -205,11 +205,11 @@
             this.lblConditionLocalTimeTooltip = new System.Windows.Forms.Label();
             this.btnDescribe = new System.Windows.Forms.Button();
             this.frmConditionHasFlag = new System.Windows.Forms.Panel();
+            this.btnHasFlagFlags = new System.Windows.Forms.Button();
             this.cmbHasFlagFieldIndex = new System.Windows.Forms.ComboBox();
             this.lblHasFlagFlags = new System.Windows.Forms.Label();
             this.lblHasFlagFieldIndex = new System.Windows.Forms.Label();
             this.frmConditionHasFlagTooltip = new System.Windows.Forms.Label();
-            this.btnHasFlagFlags = new System.Windows.Forms.Button();
             this.frmConditionNot.SuspendLayout();
             this.frmConditionAura.SuspendLayout();
             this.frmConditionItem.SuspendLayout();
@@ -2039,6 +2039,16 @@
             this.frmConditionHasFlag.TabIndex = 43;
             this.frmConditionHasFlag.Visible = false;
             // 
+            // btnHasFlagFlags
+            // 
+            this.btnHasFlagFlags.Location = new System.Drawing.Point(100, 101);
+            this.btnHasFlagFlags.Name = "btnHasFlagFlags";
+            this.btnHasFlagFlags.Size = new System.Drawing.Size(536, 23);
+            this.btnHasFlagFlags.TabIndex = 8;
+            this.btnHasFlagFlags.Text = "-NONE-";
+            this.btnHasFlagFlags.UseVisualStyleBackColor = true;
+            this.btnHasFlagFlags.Click += new System.EventHandler(this.btnHasFlagFlags_Click);
+            // 
             // cmbHasFlagFieldIndex
             // 
             this.cmbHasFlagFieldIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2075,16 +2085,6 @@
             this.frmConditionHasFlagTooltip.Size = new System.Drawing.Size(624, 42);
             this.frmConditionHasFlagTooltip.TabIndex = 0;
             this.frmConditionHasFlagTooltip.Text = "Returns true if the source WorldObject has any of the specified flags.";
-            // 
-            // btnHasFlagFlags
-            // 
-            this.btnHasFlagFlags.Location = new System.Drawing.Point(100, 101);
-            this.btnHasFlagFlags.Name = "btnHasFlagFlags";
-            this.btnHasFlagFlags.Size = new System.Drawing.Size(536, 23);
-            this.btnHasFlagFlags.TabIndex = 8;
-            this.btnHasFlagFlags.Text = "-NONE-";
-            this.btnHasFlagFlags.UseVisualStyleBackColor = true;
-            this.btnHasFlagFlags.Click += new System.EventHandler(this.btnHasFlagFlags_Click);
             // 
             // FormConditionFinder
             // 
@@ -2127,6 +2127,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormConditionFinder";
             this.Text = "Condition Finder";
+            this.Shown += new System.EventHandler(this.FormConditionFinder_Shown);
             this.ResizeEnd += new System.EventHandler(this.FormConditionFinder_ResizeEnd);
             this.Controls.SetChildIndex(this.txtSearch, 0);
             this.Controls.SetChildIndex(this.btnSearch, 0);

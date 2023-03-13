@@ -61,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(672, 393);
             this.Name = "FormAreaFinder";
             this.Text = "Area Finder";
+            this.Shown += new System.EventHandler(this.FormAreaFinder_Shown);
             this.ResizeEnd += new System.EventHandler(this.FormAreaFinder_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();

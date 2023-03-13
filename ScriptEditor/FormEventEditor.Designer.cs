@@ -1490,6 +1490,7 @@
             this.Text = "Event Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEventEditor_FormClosing);
             this.Load += new System.EventHandler(this.FormEventEditor_Load);
+            this.Shown += new System.EventHandler(this.FormEventEditor_Shown);
             this.grpGeneral.ResumeLayout(false);
             this.grpGeneral.PerformLayout();
             this.grpEventFlags.ResumeLayout(false);

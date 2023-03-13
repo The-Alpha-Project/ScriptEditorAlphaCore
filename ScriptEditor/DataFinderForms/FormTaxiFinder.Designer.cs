@@ -54,6 +54,7 @@
             this.ClientSize = new System.Drawing.Size(672, 393);
             this.Name = "FormTaxiFinder";
             this.Text = "Taxi Finder";
+            this.Shown += new System.EventHandler(this.FormTaxiFinder_Shown);
             this.ResizeEnd += new System.EventHandler(this.FormTaxiFinder_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -61,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(672, 393);
             this.Name = "FormTextFinder";
             this.Text = "Text Finder";
+            this.Shown += new System.EventHandler(this.FormTextFinder_Shown);
             this.ResizeEnd += new System.EventHandler(this.FormTextFinder_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -68,6 +68,7 @@
             this.ClientSize = new System.Drawing.Size(672, 393);
             this.Name = "FormFactionFinder";
             this.Text = "Faction Template Finder";
+            this.Shown += new System.EventHandler(this.FormFactionFinder_Shown);
             this.ResizeEnd += new System.EventHandler(this.FormFactionFinder_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();

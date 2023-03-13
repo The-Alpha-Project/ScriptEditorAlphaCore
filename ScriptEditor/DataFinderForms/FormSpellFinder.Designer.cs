@@ -75,6 +75,7 @@
             this.ClientSize = new System.Drawing.Size(672, 393);
             this.Name = "FormSpellFinder";
             this.Text = "Spell Finder";
+            this.Load += new System.EventHandler(this.FormSpellFinder_Load);
             this.ResizeEnd += new System.EventHandler(this.FormSpellFinder_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();

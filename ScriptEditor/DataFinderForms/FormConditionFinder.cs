@@ -2345,5 +2345,10 @@ namespace ScriptEditor
         {
             SetScriptFieldFromTextbox(txtUnknownValue4, "Value4");
         }
+
+        private void FormConditionFinder_Shown(object sender, EventArgs e)
+        {
+            txtSearch.Focus();
+        }
     }
 }

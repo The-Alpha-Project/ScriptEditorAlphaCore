@@ -4471,6 +4471,11 @@ namespace ScriptEditor
                 }
             }
         }
+
+        private void FormScriptEditor_Shown(object sender, EventArgs e)
+        {
+            txtScriptId.Focus();
+        }
     }
 
     // Sorts items in the script actions listbox by delay.

@@ -61,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(672, 393);
             this.Name = "FormQuestFinder";
             this.Text = "Quest Finder";
+            this.Shown += new System.EventHandler(this.FormQuestFinder_Shown);
             this.ResizeEnd += new System.EventHandler(this.FormQuestFinder_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();

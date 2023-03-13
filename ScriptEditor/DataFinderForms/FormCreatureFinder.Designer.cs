@@ -66,6 +66,7 @@
             this.ClientSize = new System.Drawing.Size(672, 393);
             this.Name = "FormCreatureFinder";
             this.Text = "Creature Finder";
+            this.Shown += new System.EventHandler(this.FormCreatureFinder_Shown);
             this.ResizeEnd += new System.EventHandler(this.FormCreatureFinder_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();
