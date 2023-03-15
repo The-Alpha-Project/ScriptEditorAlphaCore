@@ -16,6 +16,8 @@ namespace ScriptEditor
         public static string mysqlHost = "localhost";
         public static string mysqlPort = "3306";
         public static string mysqlDB = "alpha_world";
+        public static string sniffsDB = "sniffs_combined5";
+        public static bool sniffsInstalled = false;
 
         // Highlight non-default values.
         public static bool highlight = false;

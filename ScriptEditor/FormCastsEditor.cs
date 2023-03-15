@@ -345,6 +345,7 @@ namespace ScriptEditor
                 txtSpell1DelayRepeatMax.Text = lbi.Template.DelayRepeatMax1.ToString();
                 txtSpell1Probability.Text = lbi.Template.Probability1.ToString();
                 cmbSpell1Target.SelectedIndex = GetIndexOfComboValue(cmbSpell1Target, (int)lbi.Template.CastTarget1);
+                btnSpell1Sniffs.Enabled = Program.sniffsInstalled;
             }
             if (lbi.Template.SpellId2 > 0)
             {
@@ -355,6 +356,7 @@ namespace ScriptEditor
                 txtSpell2DelayRepeatMax.Text = lbi.Template.DelayRepeatMax2.ToString();
                 txtSpell2Probability.Text = lbi.Template.Probability2.ToString();
                 cmbSpell2Target.SelectedIndex = GetIndexOfComboValue(cmbSpell2Target, (int)lbi.Template.CastTarget2);
+                btnSpell2Sniffs.Enabled = Program.sniffsInstalled;
             }
             if (lbi.Template.SpellId3 > 0)
             {
@@ -365,6 +367,7 @@ namespace ScriptEditor
                 txtSpell3DelayRepeatMax.Text = lbi.Template.DelayRepeatMax3.ToString();
                 txtSpell3Probability.Text = lbi.Template.Probability3.ToString();
                 cmbSpell3Target.SelectedIndex = GetIndexOfComboValue(cmbSpell3Target, (int)lbi.Template.CastTarget3);
+                btnSpell3Sniffs.Enabled = Program.sniffsInstalled;
             }
             if (lbi.Template.SpellId4 > 0)
             {
@@ -375,6 +378,7 @@ namespace ScriptEditor
                 txtSpell4DelayRepeatMax.Text = lbi.Template.DelayRepeatMax4.ToString();
                 txtSpell4Probability.Text = lbi.Template.Probability4.ToString();
                 cmbSpell4Target.SelectedIndex = GetIndexOfComboValue(cmbSpell4Target, (int)lbi.Template.CastTarget4);
+                btnSpell4Sniffs.Enabled = Program.sniffsInstalled;
             }
             if (lbi.Template.SpellId5 > 0)
             {
@@ -385,6 +389,7 @@ namespace ScriptEditor
                 txtSpell5DelayRepeatMax.Text = lbi.Template.DelayRepeatMax5.ToString();
                 txtSpell5Probability.Text = lbi.Template.Probability5.ToString();
                 cmbSpell5Target.SelectedIndex = GetIndexOfComboValue(cmbSpell5Target, (int)lbi.Template.CastTarget5);
+                btnSpell5Sniffs.Enabled = Program.sniffsInstalled;
             }
             if (lbi.Template.SpellId6 > 0)
             {
@@ -395,6 +400,7 @@ namespace ScriptEditor
                 txtSpell6DelayRepeatMax.Text = lbi.Template.DelayRepeatMax6.ToString();
                 txtSpell6Probability.Text = lbi.Template.Probability6.ToString();
                 cmbSpell6Target.SelectedIndex = GetIndexOfComboValue(cmbSpell6Target, (int)lbi.Template.CastTarget6);
+                btnSpell6Sniffs.Enabled = Program.sniffsInstalled;
             }
             if (lbi.Template.SpellId7 > 0)
             {
@@ -405,6 +411,7 @@ namespace ScriptEditor
                 txtSpell7DelayRepeatMax.Text = lbi.Template.DelayRepeatMax7.ToString();
                 txtSpell7Probability.Text = lbi.Template.Probability7.ToString();
                 cmbSpell7Target.SelectedIndex = GetIndexOfComboValue(cmbSpell7Target, (int)lbi.Template.CastTarget7);
+                btnSpell7Sniffs.Enabled = Program.sniffsInstalled;
             }
             if (lbi.Template.SpellId8 > 0)
             {
@@ -415,6 +422,7 @@ namespace ScriptEditor
                 txtSpell8DelayRepeatMax.Text = lbi.Template.DelayRepeatMax8.ToString();
                 txtSpell8Probability.Text = lbi.Template.Probability8.ToString();
                 cmbSpell8Target.SelectedIndex = GetIndexOfComboValue(cmbSpell8Target, (int)lbi.Template.CastTarget8);
+                btnSpell8Sniffs.Enabled = Program.sniffsInstalled;
             }
 
             txtName.Enabled = true;
@@ -1592,6 +1600,45 @@ namespace ScriptEditor
             ReturnValue = 0;
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void btnSpell1Sniffs_Click(object sender, EventArgs e)
+        {
+            ListBoxItem lbi = lstSpellLists.SelectedItem as ListBoxItem;
+            ShowSniffSelector(1, lbi.Template.SpellId1, lbi.Template.ID);
+        }
+
+        private void ShowSniffSelector(int slot, uint spell_id, uint entry)
+        {
+            using(FormSpellSniffs _sniffs = new FormSpellSniffs())
+            {
+                _sniffs.SpellId = spell_id;
+                _sniffs.Entry = entry;
+
+                if(_sniffs.ShowDialog() == DialogResult.OK)
+                {
+                    if(_sniffs.SelectedSniff.Entry != 0)
+                    {
+                        if (_sniffs.SelectedSniff.Initial_casts_count > 0)
+                        {
+                            TextBox box = (TextBox)Controls.Find(string.Format("txtSpell{0}DelayInitialMin", slot), true)[0];
+                            box.Text = Math.Round((double)_sniffs.SelectedSniff.Initial_delay_min / 1000).ToString();
+                            
+                            box = (TextBox)Controls.Find(string.Format("txtSpell{0}DelayInitialMax", slot), true)[0];
+                            box.Text = Math.Round((double)_sniffs.SelectedSniff.Initial_delay_max / 1000).ToString();
+                        }
+
+                        if (_sniffs.SelectedSniff.Repeat_casts_count > 0)
+                        {
+                            TextBox box = (TextBox)Controls.Find(string.Format("txtSpell{0}DelayRepeatMin", slot), true)[0];
+                            box.Text = Math.Round((double)_sniffs.SelectedSniff.Repeat_delay_min / 1000).ToString();
+
+                            box = (TextBox)Controls.Find(string.Format("txtSpell{0}DelayRepeatMax", slot), true)[0];
+                            box.Text = Math.Round((double)_sniffs.SelectedSniff.Repeat_delay_max / 1000).ToString();
+                        }
+                    }
+                };
+            }
         }
     }
     public class ListBoxItem

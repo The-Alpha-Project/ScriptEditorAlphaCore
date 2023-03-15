@@ -41,9 +41,27 @@ namespace ScriptEditor
             return false;
         }
 
+        private bool AreSniffsAvailable()
+        {
+            MySqlConnection conn = new MySqlConnection(string.Format(Program.connString, Program.sniffsDB));
+            try
+            {
+                conn.Open();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
+            return false;
+        }
+
         private async Task<bool> LoadData()
         {
-            IProgress<int> progress = new Progress<int>(value => { LoadingBar.PerformStep(); });            
+            IProgress<int> progress = new Progress<int>(value => { LoadingBar.PerformStep(); });
+
+            if (Program.sniffsInstalled) LoadingBar.Step = 12;
 
             await Task.Run(() =>
             {
@@ -80,6 +98,12 @@ namespace ScriptEditor
                 LoadingStatusText.Text = "Loading creature spells ...";
                 GameData.LoadCreatureSpells(Program.connString, "alpha_world");
                 progress.Report(1);
+                if(Program.sniffsInstalled)
+                {
+                    LoadingStatusText.Text = "Loading creature spells sniffs ...";
+                    GameData.LoadCreatureSpellsSniffs(Program.connString, "sniffs_combined5");
+                    progress.Report(1);
+                }
                 LoadingStatusText.Text = "";
                 dataLoaded = true;
             });
@@ -184,6 +208,8 @@ namespace ScriptEditor
         private async void Form1_Load(object _sender, EventArgs _e)
         {
             if (!CheckDBConnection()) Application.Exit();
+
+            Program.sniffsInstalled = AreSniffsAvailable();
 
             await LoadData();
 

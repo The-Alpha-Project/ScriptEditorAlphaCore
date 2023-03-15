@@ -23,6 +23,7 @@ namespace ScriptEditor
         public static readonly List<GameEventInfo> GameEventInfoList = new List<GameEventInfo>();
         public static readonly List<GameObjectInfo> GameObjectInfoList = new List<GameObjectInfo>();
         public static readonly List<CreatureSpellsInfo> CreatureSpellsInfoList = new List<CreatureSpellsInfo>();
+        public static readonly List<CreatureSpellsSniff> CreatureSpellsSniffsList = new List<CreatureSpellsSniff>();
         public static readonly List<ComboboxPair> UpdateFieldsList = new List<ComboboxPair>();
         public static readonly List<ComboboxPair> FlagFieldsList = new List<ComboboxPair>();
         public static readonly List<ComboboxPair> MapsList = new List<ComboboxPair>();
@@ -869,6 +870,33 @@ namespace ScriptEditor
             }
             conn.Close();
         }
+
+        internal static void LoadCreatureSpellsSniffs(string connString, string database)
+        {
+            CreatureSpellsSniffsList.Clear();
+
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT entry, spell_id, initial_casts_count, initial_delay_min, initial_delay_average, initial_delay_max, repeat_casts_count, repeat_delay_min, repeat_delay_average, repeat_delay_max FROM creature_spell_timers ORDER BY entry ASC";
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    CreatureSpellsSniffsList.Add(new CreatureSpellsSniff(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetUInt32(2), reader.GetUInt32(3), reader.GetUInt32(4), reader.GetUInt32(5),
+                        reader.GetUInt32(6), reader.GetUInt32(7), reader.GetUInt32(8), reader.GetUInt32(9)));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
         static GameData()
         {
             // Add update field ids to a list.
@@ -2624,6 +2652,35 @@ namespace ScriptEditor
             Name = name;
         }
     }
+
+    public struct CreatureSpellsSniff
+    {
+        public uint Entry;
+        public uint Spell_id;
+        public uint Initial_casts_count;
+        public uint Initial_delay_min;
+        public uint Initial_delay_average;
+        public uint Initial_delay_max;
+        public uint Repeat_casts_count;
+        public uint Repeat_delay_min;
+        public uint Repeat_delay_average;
+        public uint Repeat_delay_max;
+
+        public CreatureSpellsSniff(uint entry, uint spell_id, uint initial_casts_count, uint initial_delay_min, uint initial_delay_average, uint initial_delay_max, uint repeat_cast_count, uint repeat_delay_min, uint repeat_delay_average, uint repeat_delay_max)
+        {
+            Entry = entry;
+            Spell_id = spell_id;
+            Initial_casts_count = initial_casts_count;
+            Initial_delay_min = initial_delay_min;
+            Initial_delay_average = initial_delay_average;
+            Initial_delay_max = initial_delay_max;
+            Repeat_casts_count = repeat_cast_count;
+            Repeat_delay_min = repeat_delay_min;
+            Repeat_delay_average = repeat_delay_average;
+            Repeat_delay_max = repeat_delay_max;
+        }
+    }
+
     public class ComboboxPair
     {
         public string Text { get; set; }

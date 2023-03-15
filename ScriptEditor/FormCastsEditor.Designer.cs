@@ -110,6 +110,14 @@
             this.btnSpell8Id = new System.Windows.Forms.Button();
             this.txtSpell8Probability = new System.Windows.Forms.TextBox();
             this.frmData = new System.Windows.Forms.Panel();
+            this.btnSpell8Sniffs = new System.Windows.Forms.Button();
+            this.btnSpell7Sniffs = new System.Windows.Forms.Button();
+            this.btnSpell6Sniffs = new System.Windows.Forms.Button();
+            this.btnSpell5Sniffs = new System.Windows.Forms.Button();
+            this.btnSpell4Sniffs = new System.Windows.Forms.Button();
+            this.btnSpell3Sniffs = new System.Windows.Forms.Button();
+            this.btnSpell2Sniffs = new System.Windows.Forms.Button();
+            this.btnSpell1Sniffs = new System.Windows.Forms.Button();
             this.btnSaveThis = new System.Windows.Forms.Button();
             this.btnSaveAll = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -888,6 +896,14 @@
             // 
             // frmData
             // 
+            this.frmData.Controls.Add(this.btnSpell8Sniffs);
+            this.frmData.Controls.Add(this.btnSpell7Sniffs);
+            this.frmData.Controls.Add(this.btnSpell6Sniffs);
+            this.frmData.Controls.Add(this.btnSpell5Sniffs);
+            this.frmData.Controls.Add(this.btnSpell4Sniffs);
+            this.frmData.Controls.Add(this.btnSpell3Sniffs);
+            this.frmData.Controls.Add(this.btnSpell2Sniffs);
+            this.frmData.Controls.Add(this.btnSpell1Sniffs);
             this.frmData.Controls.Add(this.btnSpell1Id);
             this.frmData.Controls.Add(this.cmbSpell8Target);
             this.frmData.Controls.Add(this.txtSpell1Probability);
@@ -955,8 +971,89 @@
             this.frmData.Enabled = false;
             this.frmData.Location = new System.Drawing.Point(294, 114);
             this.frmData.Name = "frmData";
-            this.frmData.Size = new System.Drawing.Size(734, 300);
+            this.frmData.Size = new System.Drawing.Size(808, 300);
             this.frmData.TabIndex = 82;
+            // 
+            // btnSpell8Sniffs
+            // 
+            this.btnSpell8Sniffs.Enabled = false;
+            this.btnSpell8Sniffs.Location = new System.Drawing.Point(734, 255);
+            this.btnSpell8Sniffs.Name = "btnSpell8Sniffs";
+            this.btnSpell8Sniffs.Size = new System.Drawing.Size(63, 23);
+            this.btnSpell8Sniffs.TabIndex = 89;
+            this.btnSpell8Sniffs.Text = "Sniffs";
+            this.btnSpell8Sniffs.UseVisualStyleBackColor = true;
+            // 
+            // btnSpell7Sniffs
+            // 
+            this.btnSpell7Sniffs.Enabled = false;
+            this.btnSpell7Sniffs.Location = new System.Drawing.Point(734, 219);
+            this.btnSpell7Sniffs.Name = "btnSpell7Sniffs";
+            this.btnSpell7Sniffs.Size = new System.Drawing.Size(63, 23);
+            this.btnSpell7Sniffs.TabIndex = 88;
+            this.btnSpell7Sniffs.Text = "Sniffs";
+            this.btnSpell7Sniffs.UseVisualStyleBackColor = true;
+            // 
+            // btnSpell6Sniffs
+            // 
+            this.btnSpell6Sniffs.Enabled = false;
+            this.btnSpell6Sniffs.Location = new System.Drawing.Point(734, 183);
+            this.btnSpell6Sniffs.Name = "btnSpell6Sniffs";
+            this.btnSpell6Sniffs.Size = new System.Drawing.Size(63, 23);
+            this.btnSpell6Sniffs.TabIndex = 87;
+            this.btnSpell6Sniffs.Text = "Sniffs";
+            this.btnSpell6Sniffs.UseVisualStyleBackColor = true;
+            // 
+            // btnSpell5Sniffs
+            // 
+            this.btnSpell5Sniffs.Enabled = false;
+            this.btnSpell5Sniffs.Location = new System.Drawing.Point(734, 147);
+            this.btnSpell5Sniffs.Name = "btnSpell5Sniffs";
+            this.btnSpell5Sniffs.Size = new System.Drawing.Size(63, 23);
+            this.btnSpell5Sniffs.TabIndex = 86;
+            this.btnSpell5Sniffs.Text = "Sniffs";
+            this.btnSpell5Sniffs.UseVisualStyleBackColor = true;
+            // 
+            // btnSpell4Sniffs
+            // 
+            this.btnSpell4Sniffs.Enabled = false;
+            this.btnSpell4Sniffs.Location = new System.Drawing.Point(734, 111);
+            this.btnSpell4Sniffs.Name = "btnSpell4Sniffs";
+            this.btnSpell4Sniffs.Size = new System.Drawing.Size(63, 23);
+            this.btnSpell4Sniffs.TabIndex = 85;
+            this.btnSpell4Sniffs.Text = "Sniffs";
+            this.btnSpell4Sniffs.UseVisualStyleBackColor = true;
+            // 
+            // btnSpell3Sniffs
+            // 
+            this.btnSpell3Sniffs.Enabled = false;
+            this.btnSpell3Sniffs.Location = new System.Drawing.Point(734, 75);
+            this.btnSpell3Sniffs.Name = "btnSpell3Sniffs";
+            this.btnSpell3Sniffs.Size = new System.Drawing.Size(63, 23);
+            this.btnSpell3Sniffs.TabIndex = 84;
+            this.btnSpell3Sniffs.Text = "Sniffs";
+            this.btnSpell3Sniffs.UseVisualStyleBackColor = true;
+            // 
+            // btnSpell2Sniffs
+            // 
+            this.btnSpell2Sniffs.Enabled = false;
+            this.btnSpell2Sniffs.Location = new System.Drawing.Point(734, 39);
+            this.btnSpell2Sniffs.Name = "btnSpell2Sniffs";
+            this.btnSpell2Sniffs.Size = new System.Drawing.Size(63, 23);
+            this.btnSpell2Sniffs.TabIndex = 83;
+            this.btnSpell2Sniffs.Text = "Sniffs";
+            this.btnSpell2Sniffs.UseVisualStyleBackColor = true;
+            // 
+            // btnSpell1Sniffs
+            // 
+            this.btnSpell1Sniffs.Enabled = false;
+            this.btnSpell1Sniffs.Location = new System.Drawing.Point(734, 3);
+            this.btnSpell1Sniffs.Name = "btnSpell1Sniffs";
+            this.btnSpell1Sniffs.Size = new System.Drawing.Size(63, 23);
+            this.btnSpell1Sniffs.TabIndex = 82;
+            this.btnSpell1Sniffs.Text = "Sniffs";
+            this.btnSpell1Sniffs.UseVisualStyleBackColor = true;
+            this.btnSpell1Sniffs.Click += new System.EventHandler(this.btnSpell1Sniffs_Click);
             // 
             // btnSaveThis
             // 
@@ -1012,7 +1109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 453);
+            this.ClientSize = new System.Drawing.Size(1114, 453);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnSelectNone);
@@ -1138,5 +1235,13 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSelect;
         protected System.Windows.Forms.Button btnSelectNone;
+        private System.Windows.Forms.Button btnSpell8Sniffs;
+        private System.Windows.Forms.Button btnSpell7Sniffs;
+        private System.Windows.Forms.Button btnSpell6Sniffs;
+        private System.Windows.Forms.Button btnSpell5Sniffs;
+        private System.Windows.Forms.Button btnSpell4Sniffs;
+        private System.Windows.Forms.Button btnSpell3Sniffs;
+        private System.Windows.Forms.Button btnSpell2Sniffs;
+        private System.Windows.Forms.Button btnSpell1Sniffs;
     }
 }

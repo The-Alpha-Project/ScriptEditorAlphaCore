@@ -232,6 +232,12 @@
     <Compile Include="FormMaskCalculator.Designer.cs">
       <DependentUpon>FormMaskCalculator.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSpellSniffs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSpellSniffs.Designer.cs">
+      <DependentUpon>FormSpellSniffs.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTargetSelectFlags.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMaskCalculator.resx">
       <DependentUpon>FormMaskCalculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSpellSniffs.resx">
+      <DependentUpon>FormSpellSniffs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTargetSelectFlags.resx">
       <DependentUpon>FormTargetSelectFlags.cs</DependentUpon>
