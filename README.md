@@ -31,6 +31,10 @@ Highlight = False
 
 Set your database user name and password and the database host name if needed. Save the file.
 
+# Sniffs data integration
+
+If you have a sniffs database dump called "sniffs_combined5" you can import it to your SQL database and it will be automatically used by the Script Editor. If the data is present the casts editor will have a "Sniffs" button for every spell entry where you can lookup (and import, if you want) sniffed spell timings for the selected spell.
+
 # Usage
 
 Run ```ScriptEditor.exe```
