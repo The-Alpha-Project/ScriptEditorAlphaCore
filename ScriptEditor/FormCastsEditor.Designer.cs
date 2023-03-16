@@ -983,6 +983,7 @@
             this.btnSpell8Sniffs.TabIndex = 89;
             this.btnSpell8Sniffs.Text = "Sniffs";
             this.btnSpell8Sniffs.UseVisualStyleBackColor = true;
+            this.btnSpell8Sniffs.Click += new System.EventHandler(this.btnSpell8Sniffs_Click);
             // 
             // btnSpell7Sniffs
             // 
@@ -993,6 +994,7 @@
             this.btnSpell7Sniffs.TabIndex = 88;
             this.btnSpell7Sniffs.Text = "Sniffs";
             this.btnSpell7Sniffs.UseVisualStyleBackColor = true;
+            this.btnSpell7Sniffs.Click += new System.EventHandler(this.btnSpell7Sniffs_Click);
             // 
             // btnSpell6Sniffs
             // 
@@ -1003,6 +1005,7 @@
             this.btnSpell6Sniffs.TabIndex = 87;
             this.btnSpell6Sniffs.Text = "Sniffs";
             this.btnSpell6Sniffs.UseVisualStyleBackColor = true;
+            this.btnSpell6Sniffs.Click += new System.EventHandler(this.btnSpell6Sniffs_Click);
             // 
             // btnSpell5Sniffs
             // 
@@ -1013,6 +1016,7 @@
             this.btnSpell5Sniffs.TabIndex = 86;
             this.btnSpell5Sniffs.Text = "Sniffs";
             this.btnSpell5Sniffs.UseVisualStyleBackColor = true;
+            this.btnSpell5Sniffs.Click += new System.EventHandler(this.btnSpell5Sniffs_Click);
             // 
             // btnSpell4Sniffs
             // 
@@ -1023,6 +1027,7 @@
             this.btnSpell4Sniffs.TabIndex = 85;
             this.btnSpell4Sniffs.Text = "Sniffs";
             this.btnSpell4Sniffs.UseVisualStyleBackColor = true;
+            this.btnSpell4Sniffs.Click += new System.EventHandler(this.btnSpell4Sniffs_Click);
             // 
             // btnSpell3Sniffs
             // 
@@ -1033,6 +1038,7 @@
             this.btnSpell3Sniffs.TabIndex = 84;
             this.btnSpell3Sniffs.Text = "Sniffs";
             this.btnSpell3Sniffs.UseVisualStyleBackColor = true;
+            this.btnSpell3Sniffs.Click += new System.EventHandler(this.btnSpell3Sniffs_Click);
             // 
             // btnSpell2Sniffs
             // 
@@ -1043,6 +1049,7 @@
             this.btnSpell2Sniffs.TabIndex = 83;
             this.btnSpell2Sniffs.Text = "Sniffs";
             this.btnSpell2Sniffs.UseVisualStyleBackColor = true;
+            this.btnSpell2Sniffs.Click += new System.EventHandler(this.btnSpell2Sniffs_Click);
             // 
             // btnSpell1Sniffs
             // 

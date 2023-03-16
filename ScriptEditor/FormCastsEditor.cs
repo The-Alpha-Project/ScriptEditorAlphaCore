@@ -1640,6 +1640,48 @@ namespace ScriptEditor
                 };
             }
         }
+
+        private void btnSpell2Sniffs_Click(object sender, EventArgs e)
+        {
+            ListBoxItem lbi = lstSpellLists.SelectedItem as ListBoxItem;
+            ShowSniffSelector(2, lbi.Template.SpellId2, lbi.Template.ID);
+        }
+
+        private void btnSpell3Sniffs_Click(object sender, EventArgs e)
+        {
+            ListBoxItem lbi = lstSpellLists.SelectedItem as ListBoxItem;
+            ShowSniffSelector(3, lbi.Template.SpellId3, lbi.Template.ID);
+        }
+
+        private void btnSpell4Sniffs_Click(object sender, EventArgs e)
+        {
+            ListBoxItem lbi = lstSpellLists.SelectedItem as ListBoxItem;
+            ShowSniffSelector(4, lbi.Template.SpellId4, lbi.Template.ID);
+        }
+
+        private void btnSpell5Sniffs_Click(object sender, EventArgs e)
+        {
+            ListBoxItem lbi = lstSpellLists.SelectedItem as ListBoxItem;
+            ShowSniffSelector(5, lbi.Template.SpellId5, lbi.Template.ID);
+        }
+
+        private void btnSpell6Sniffs_Click(object sender, EventArgs e)
+        {
+            ListBoxItem lbi = lstSpellLists.SelectedItem as ListBoxItem;
+            ShowSniffSelector(6, lbi.Template.SpellId6, lbi.Template.ID);
+        }
+
+        private void btnSpell7Sniffs_Click(object sender, EventArgs e)
+        {
+            ListBoxItem lbi = lstSpellLists.SelectedItem as ListBoxItem;
+            ShowSniffSelector(7, lbi.Template.SpellId7, lbi.Template.ID);
+        }
+
+        private void btnSpell8Sniffs_Click(object sender, EventArgs e)
+        {
+            ListBoxItem lbi = lstSpellLists.SelectedItem as ListBoxItem;
+            ShowSniffSelector(8, lbi.Template.SpellId8, lbi.Template.ID);
+        }
     }
     public class ListBoxItem
     {
