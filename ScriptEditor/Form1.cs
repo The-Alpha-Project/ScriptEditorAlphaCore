@@ -47,14 +47,20 @@ namespace ScriptEditor
             try
             {
                 conn.Open();
-                return true;
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "show tables";
+                MySqlDataReader reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+                    string txt = reader.GetString(0);
+                    if (txt.ToLower() == "creature_spell_timers") return true;
+                }
+                return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
+                return false;
             }
-
-            return false;
         }
 
         private async Task<bool> LoadData()
