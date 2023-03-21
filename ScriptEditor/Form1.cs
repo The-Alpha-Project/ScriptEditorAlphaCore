@@ -1,5 +1,6 @@
 ﻿using MySqlConnector;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Media;
 using System.Threading.Tasks;
@@ -52,61 +53,34 @@ namespace ScriptEditor
         private async Task<bool> LoadData()
         {
             IProgress<int> progress = new Progress<int>(value => { LoadingBar.PerformStep(); });
+            List<LoadingAction> loadingActions = new List<LoadingAction>();
+            loadingActions.Add(new LoadingAction(() => GameData.LoadBroadcastTexts(Program.connString, "alpha_world"), "Loading broadcast texts ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadQuests(Program.connString, "alpha_world"), "Loading quests ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadGameObjects(Program.connString, "alpha_world"), "Loading game objects ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadCreatures(Program.connString, "alpha_world"), "Loading creatures ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadSpells(Program.connString, "alpha_dbc"), "Loading spells ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadItems(Program.connString, "alpha_world"), "Loading items ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadCondition(Program.connString, "alpha_world"), "Loading conditions ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadAreas(Program.connString, "alpha_world"), "Loading areas ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadFactions(Program.connString, "alpha_dbc"), "Loading factions ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadFactionTemplates(Program.connString, "alpha_dbc"), "Loading faction templates ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureSpells(Program.connString, "alpha_world"), "Loading creature spells ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureMovement(Program.connString, "alpha_world"), "Loading creature movement ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureMovementSpecial(Program.connString, "alpha_world"), "Loading creature movement special ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureMovementTemplate(Program.connString, "alpha_world"), "Loading creature movement templates ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureSpellsSniffs(Program.connString, "sniffs_combined5"), "Loading creature spell sniffs ..."));
 
-            if (Program.sniffsInstalled) LoadingBar.Step = 15;
+            LoadingBar.Step = loadingActions.Count;
 
             await Task.Run(() =>
             {
-                LoadingStatusText.Text = "Loading broadcast texts ...";
-                GameData.LoadBroadcastTexts(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading quests ...";
-                GameData.LoadQuests(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading game objects ...";
-                GameData.LoadGameObjects(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading creatures ...";
-                GameData.LoadCreatures(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading spells ...";
-                GameData.LoadSpells(Program.connString, "alpha_dbc");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading items ...";
-                GameData.LoadItems(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading conditions ...";
-                GameData.LoadCondition(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading areas ...";
-                GameData.LoadAreas(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading factions ...";
-                GameData.LoadFactions(Program.connString, "alpha_dbc");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading faction templates ...";
-                GameData.LoadFactionTemplates(Program.connString, "alpha_dbc");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading creature spells ...";
-                GameData.LoadCreatureSpells(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading creature movement ...";
-                GameData.LoadCreatureMovement(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading creature movement special ...";
-                GameData.LoadCreatureMovementSpecial(Program.connString, "alpha_world");
-                progress.Report(1);
-                LoadingStatusText.Text = "Loading creature movement template ...";
-                GameData.LoadCreatureMovementTemplate(Program.connString, "alpha_world");
-                progress.Report(1);
-
-                if (Program.sniffsInstalled)
+                foreach(LoadingAction _action in loadingActions) 
                 {
-                    LoadingStatusText.Text = "Loading creature spells sniffs ...";
-                    GameData.LoadCreatureSpellsSniffs(Program.connString, "sniffs_combined5");
+                    LoadingStatusText.Text = _action.IndicatorText;
+                    _action.Action();
                     progress.Report(1);
                 }
-                LoadingStatusText.Text = "";
+
                 dataLoaded = true;
             });
 

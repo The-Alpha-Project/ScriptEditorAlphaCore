@@ -876,6 +876,8 @@ namespace ScriptEditor
 
         internal static void LoadCreatureSpellsSniffs(string connString, string database)
         {
+            if (!Program.sniffsInstalled) return;
+
             CreatureSpellsSniffsList.Clear();
 
             MySqlConnection conn = new MySqlConnection(string.Format(connString, database));

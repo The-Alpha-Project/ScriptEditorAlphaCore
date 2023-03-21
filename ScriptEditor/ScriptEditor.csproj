@@ -246,6 +246,7 @@
     </Compile>
     <Compile Include="GameData.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="LoadingAction.cs" />
     <Compile Include="MixedListSorter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
