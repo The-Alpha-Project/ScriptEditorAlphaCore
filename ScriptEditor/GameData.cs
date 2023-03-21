@@ -24,6 +24,9 @@ namespace ScriptEditor
         public static readonly List<GameObjectInfo> GameObjectInfoList = new List<GameObjectInfo>();
         public static readonly List<CreatureSpellsInfo> CreatureSpellsInfoList = new List<CreatureSpellsInfo>();
         public static readonly List<CreatureSpellsSniff> CreatureSpellsSniffsList = new List<CreatureSpellsSniff>();
+        public static readonly List<Waypoint> CreatureMovementList = new List<Waypoint>();
+        public static readonly List<Waypoint> CreatureMovementSpecialList = new List<Waypoint>();
+        public static readonly List<Waypoint> CreatureMovementTemplateList = new List<Waypoint>();
         public static readonly List<ComboboxPair> UpdateFieldsList = new List<ComboboxPair>();
         public static readonly List<ComboboxPair> FlagFieldsList = new List<ComboboxPair>();
         public static readonly List<ComboboxPair> MapsList = new List<ComboboxPair>();
@@ -887,6 +890,78 @@ namespace ScriptEditor
                 {
                     CreatureSpellsSniffsList.Add(new CreatureSpellsSniff(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetUInt32(2), reader.GetUInt32(3), reader.GetUInt32(4), reader.GetUInt32(5),
                         reader.GetUInt32(6), reader.GetUInt32(7), reader.GetUInt32(8), reader.GetUInt32(9)));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
+        internal static void LoadCreatureMovement(string connString, string database)
+        {
+            CreatureMovementList.Clear();
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT id, point, position_x, position_y, position_z, orientation, waittime, wander_distance, script_id FROM creature_movement";
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    CreatureMovementList.Add(new Waypoint(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetFloat(2), reader.GetFloat(3), reader.GetFloat(4), reader.GetFloat(5), reader.GetUInt32(6), reader.GetFloat(7), reader.GetUInt32(8)));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
+        internal static void LoadCreatureMovementSpecial(string connString, string database)
+        {
+            CreatureMovementSpecialList.Clear();
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT id, point, position_x, position_y, position_z, orientation, waittime, wander_distance, script_id FROM creature_movement_special";
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    CreatureMovementSpecialList.Add(new Waypoint(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetFloat(2), reader.GetFloat(3), reader.GetFloat(4), reader.GetFloat(5), reader.GetUInt32(6), reader.GetFloat(7), reader.GetUInt32(8)));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
+        internal static void LoadCreatureMovementTemplate(string connString, string database)
+        {
+            CreatureMovementTemplateList.Clear();
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT id, point, position_x, position_y, position_z, orientation, waittime, wander_distance, script_id FROM creature_movement_special";
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    CreatureMovementTemplateList.Add(new Waypoint(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetFloat(2), reader.GetFloat(3), reader.GetFloat(4), reader.GetFloat(5), reader.GetUInt32(6), reader.GetFloat(7), reader.GetUInt32(8)));
                 }
                 reader.Close();
             }

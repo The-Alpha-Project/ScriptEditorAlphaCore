@@ -250,6 +250,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptAction.cs" />
+    <Compile Include="Waypoint.cs" />
     <EmbeddedResource Include="DataFinderForms\FormFactionFinder.resx">
       <DependentUpon>FormFactionFinder.cs</DependentUpon>
     </EmbeddedResource>

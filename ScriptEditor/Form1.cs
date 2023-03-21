@@ -67,7 +67,7 @@ namespace ScriptEditor
         {
             IProgress<int> progress = new Progress<int>(value => { LoadingBar.PerformStep(); });
 
-            if (Program.sniffsInstalled) LoadingBar.Step = 12;
+            if (Program.sniffsInstalled) LoadingBar.Step = 15;
 
             await Task.Run(() =>
             {
@@ -104,7 +104,17 @@ namespace ScriptEditor
                 LoadingStatusText.Text = "Loading creature spells ...";
                 GameData.LoadCreatureSpells(Program.connString, "alpha_world");
                 progress.Report(1);
-                if(Program.sniffsInstalled)
+                LoadingStatusText.Text = "Loading creature movement ...";
+                GameData.LoadCreatureMovement(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading creature movement special ...";
+                GameData.LoadCreatureMovementSpecial(Program.connString, "alpha_world");
+                progress.Report(1);
+                LoadingStatusText.Text = "Loading creature movement template ...";
+                GameData.LoadCreatureMovementTemplate(Program.connString, "alpha_world");
+                progress.Report(1);
+
+                if (Program.sniffsInstalled)
                 {
                     LoadingStatusText.Text = "Loading creature spells sniffs ...";
                     GameData.LoadCreatureSpellsSniffs(Program.connString, "sniffs_combined5");
