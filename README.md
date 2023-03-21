@@ -10,6 +10,7 @@ Changes:
 - proper INI file parsing and config.ini file will be created if it doesn't exist
 - slightly improved script editor including specific handling of quest start/end scripts
 - look up creature spell timers from the casts editor if spell sniff database is present
+- waypoint editor
 - other QoL improvements
 
 # Installation
