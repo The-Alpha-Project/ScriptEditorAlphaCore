@@ -24,5 +24,18 @@
             Wander_distance = wander_distance;
             Script_id = script_id;
         }
+
+        public Waypoint(uint id, uint point)
+        {
+            Id = id;
+            Point = point;
+            Position_x = 0;
+            Position_y = 0;
+            Position_z = 0;
+            Orientation = 0;
+            Waittime = 0;
+            Wander_distance = 0;
+            Script_id = 0;
+        }
     }
 }
