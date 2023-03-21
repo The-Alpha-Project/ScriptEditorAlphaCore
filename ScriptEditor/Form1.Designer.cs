@@ -66,6 +66,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.LoadingBar = new System.Windows.Forms.ToolStripProgressBar();
             this.LoadingStatusText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnWaypoints = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picScriptEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEventEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGitLink)).BeginInit();
@@ -381,6 +382,16 @@
             this.LoadingStatusText.Size = new System.Drawing.Size(62, 17);
             this.LoadingStatusText.Text = "Loading ...";
             // 
+            // btnWaypoints
+            // 
+            this.btnWaypoints.Location = new System.Drawing.Point(132, 82);
+            this.btnWaypoints.Name = "btnWaypoints";
+            this.btnWaypoints.Size = new System.Drawing.Size(75, 23);
+            this.btnWaypoints.TabIndex = 7;
+            this.btnWaypoints.Text = "Waypoints";
+            this.btnWaypoints.UseVisualStyleBackColor = true;
+            this.btnWaypoints.Click += new System.EventHandler(this.btnWaypoints_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,6 +399,7 @@
             this.BackgroundImage = global::ScriptEditor.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(330, 371);
+            this.Controls.Add(this.btnWaypoints);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.picConditionEditor);
             this.Controls.Add(this.picCastsEditor);
@@ -456,5 +468,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar LoadingBar;
         private System.Windows.Forms.ToolStripStatusLabel LoadingStatusText;
+        private System.Windows.Forms.Button btnWaypoints;
     }
 }

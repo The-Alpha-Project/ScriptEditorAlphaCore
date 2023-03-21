@@ -953,7 +953,7 @@ namespace ScriptEditor
             CreatureMovementTemplateList.Clear();
             MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT id, point, position_x, position_y, position_z, orientation, waittime, wander_distance, script_id FROM creature_movement_special";
+            command.CommandText = "SELECT entry, point, position_x, position_y, position_z, orientation, waittime, wander_distance, script_id FROM creature_movement_template";
             try
             {
                 conn.Open();

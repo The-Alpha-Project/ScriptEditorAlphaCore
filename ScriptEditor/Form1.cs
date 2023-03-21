@@ -341,5 +341,11 @@ namespace ScriptEditor
             };
 
         }
+
+        private void btnWaypoints_Click(object sender, EventArgs e)
+        {
+            FormWaypointEditor form = new FormWaypointEditor();
+            form.ShowDialog();
+        }
     }
 }
