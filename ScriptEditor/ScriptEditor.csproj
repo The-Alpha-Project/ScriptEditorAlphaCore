@@ -367,46 +367,10 @@
     <None Include="Resources\orc.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cast editor button black.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cast editor button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\event editor button black.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\event editor button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\script editor button black.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\script editor button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MouseOver.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\gitlink1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\gitlink2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\main.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mage.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\condition_editor_button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\condition_editor_button_black.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

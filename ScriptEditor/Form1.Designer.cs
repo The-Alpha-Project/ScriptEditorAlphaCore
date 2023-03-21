@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.picScriptEditor = new System.Windows.Forms.PictureBox();
-            this.picEventEditor = new System.Windows.Forms.PictureBox();
-            this.picGitLink = new System.Windows.Forms.PictureBox();
-            this.picCastsEditor = new System.Windows.Forms.PictureBox();
-            this.picConditionEditor = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiEditors = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiScripts = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,87 +62,13 @@
             this.LoadingBar = new System.Windows.Forms.ToolStripProgressBar();
             this.LoadingStatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnWaypoints = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picScriptEditor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEventEditor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picGitLink)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCastsEditor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picConditionEditor)).BeginInit();
+            this.btnScriptEditor = new System.Windows.Forms.Button();
+            this.btnEventEditor = new System.Windows.Forms.Button();
+            this.btnCastsEditor = new System.Windows.Forms.Button();
+            this.btnConditionsEditor = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // picScriptEditor
-            // 
-            this.picScriptEditor.BackColor = System.Drawing.Color.Transparent;
-            this.picScriptEditor.BackgroundImage = global::ScriptEditor.Properties.Resources.script_editor_button_black;
-            this.picScriptEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picScriptEditor.InitialImage = null;
-            this.picScriptEditor.Location = new System.Drawing.Point(17, 126);
-            this.picScriptEditor.Name = "picScriptEditor";
-            this.picScriptEditor.Size = new System.Drawing.Size(138, 97);
-            this.picScriptEditor.TabIndex = 0;
-            this.picScriptEditor.TabStop = false;
-            this.picScriptEditor.Click += new System.EventHandler(this.picScriptEditor_Click);
-            this.picScriptEditor.MouseEnter += new System.EventHandler(this.picScriptEditor_MouseEnter);
-            this.picScriptEditor.MouseLeave += new System.EventHandler(this.picScriptEditor_MouseLeave);
-            // 
-            // picEventEditor
-            // 
-            this.picEventEditor.BackColor = System.Drawing.Color.Transparent;
-            this.picEventEditor.BackgroundImage = global::ScriptEditor.Properties.Resources.event_editor_button_black;
-            this.picEventEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picEventEditor.InitialImage = null;
-            this.picEventEditor.Location = new System.Drawing.Point(175, 126);
-            this.picEventEditor.Name = "picEventEditor";
-            this.picEventEditor.Size = new System.Drawing.Size(138, 97);
-            this.picEventEditor.TabIndex = 1;
-            this.picEventEditor.TabStop = false;
-            this.picEventEditor.Click += new System.EventHandler(this.picEventEditor_Click);
-            this.picEventEditor.MouseEnter += new System.EventHandler(this.picEventEditor_MouseEnter);
-            this.picEventEditor.MouseLeave += new System.EventHandler(this.picEventEditor_MouseLeave);
-            // 
-            // picGitLink
-            // 
-            this.picGitLink.BackColor = System.Drawing.Color.Transparent;
-            this.picGitLink.BackgroundImage = global::ScriptEditor.Properties.Resources.gitlink1;
-            this.picGitLink.Location = new System.Drawing.Point(8, 29);
-            this.picGitLink.Name = "picGitLink";
-            this.picGitLink.Size = new System.Drawing.Size(314, 47);
-            this.picGitLink.TabIndex = 2;
-            this.picGitLink.TabStop = false;
-            this.picGitLink.Click += new System.EventHandler(this.picGitLink_Click);
-            this.picGitLink.MouseEnter += new System.EventHandler(this.picGitLink_MouseEnter);
-            this.picGitLink.MouseLeave += new System.EventHandler(this.picGitLink_MouseLeave);
-            // 
-            // picCastsEditor
-            // 
-            this.picCastsEditor.BackColor = System.Drawing.Color.Transparent;
-            this.picCastsEditor.BackgroundImage = global::ScriptEditor.Properties.Resources.cast_editor_button_black;
-            this.picCastsEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picCastsEditor.InitialImage = null;
-            this.picCastsEditor.Location = new System.Drawing.Point(17, 233);
-            this.picCastsEditor.Name = "picCastsEditor";
-            this.picCastsEditor.Size = new System.Drawing.Size(138, 97);
-            this.picCastsEditor.TabIndex = 3;
-            this.picCastsEditor.TabStop = false;
-            this.picCastsEditor.Click += new System.EventHandler(this.picCastsEditor_Click);
-            this.picCastsEditor.MouseEnter += new System.EventHandler(this.picCastsEditor_MouseEnter);
-            this.picCastsEditor.MouseLeave += new System.EventHandler(this.picCastsEditor_MouseLeave);
-            // 
-            // picConditionEditor
-            // 
-            this.picConditionEditor.BackColor = System.Drawing.Color.Transparent;
-            this.picConditionEditor.BackgroundImage = global::ScriptEditor.Properties.Resources.condition_editor_button_black;
-            this.picConditionEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picConditionEditor.InitialImage = null;
-            this.picConditionEditor.Location = new System.Drawing.Point(175, 233);
-            this.picConditionEditor.Name = "picConditionEditor";
-            this.picConditionEditor.Size = new System.Drawing.Size(138, 97);
-            this.picConditionEditor.TabIndex = 4;
-            this.picConditionEditor.TabStop = false;
-            this.picConditionEditor.Click += new System.EventHandler(this.picConditionEditor_Click);
-            this.picConditionEditor.MouseEnter += new System.EventHandler(this.picConditionEditor_MouseEnter);
-            this.picConditionEditor.MouseLeave += new System.EventHandler(this.picConditionEditor_MouseLeave);
             // 
             // menuStrip1
             // 
@@ -364,9 +285,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LoadingBar,
             this.LoadingStatusText});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 349);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 388);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(330, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(722, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -378,34 +299,79 @@
             // 
             // LoadingStatusText
             // 
+            this.LoadingStatusText.BackColor = System.Drawing.SystemColors.Control;
             this.LoadingStatusText.Name = "LoadingStatusText";
             this.LoadingStatusText.Size = new System.Drawing.Size(62, 17);
             this.LoadingStatusText.Text = "Loading ...";
             // 
             // btnWaypoints
             // 
-            this.btnWaypoints.Location = new System.Drawing.Point(132, 82);
+            this.btnWaypoints.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnWaypoints.Location = new System.Drawing.Point(565, 47);
             this.btnWaypoints.Name = "btnWaypoints";
-            this.btnWaypoints.Size = new System.Drawing.Size(75, 23);
-            this.btnWaypoints.TabIndex = 7;
+            this.btnWaypoints.Size = new System.Drawing.Size(129, 75);
+            this.btnWaypoints.TabIndex = 4;
             this.btnWaypoints.Text = "Waypoints";
             this.btnWaypoints.UseVisualStyleBackColor = true;
             this.btnWaypoints.Click += new System.EventHandler(this.btnWaypoints_Click);
+            // 
+            // btnScriptEditor
+            // 
+            this.btnScriptEditor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnScriptEditor.Location = new System.Drawing.Point(25, 47);
+            this.btnScriptEditor.Name = "btnScriptEditor";
+            this.btnScriptEditor.Size = new System.Drawing.Size(129, 75);
+            this.btnScriptEditor.TabIndex = 0;
+            this.btnScriptEditor.Text = "Script Editor";
+            this.btnScriptEditor.UseVisualStyleBackColor = true;
+            this.btnScriptEditor.Click += new System.EventHandler(this.picScriptEditor_Click);
+            // 
+            // btnEventEditor
+            // 
+            this.btnEventEditor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnEventEditor.Location = new System.Drawing.Point(160, 47);
+            this.btnEventEditor.Name = "btnEventEditor";
+            this.btnEventEditor.Size = new System.Drawing.Size(129, 75);
+            this.btnEventEditor.TabIndex = 1;
+            this.btnEventEditor.Text = "Event Editor";
+            this.btnEventEditor.UseVisualStyleBackColor = true;
+            this.btnEventEditor.Click += new System.EventHandler(this.picEventEditor_Click);
+            // 
+            // btnCastsEditor
+            // 
+            this.btnCastsEditor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCastsEditor.Location = new System.Drawing.Point(295, 47);
+            this.btnCastsEditor.Name = "btnCastsEditor";
+            this.btnCastsEditor.Size = new System.Drawing.Size(129, 75);
+            this.btnCastsEditor.TabIndex = 2;
+            this.btnCastsEditor.Text = "Casts Editor";
+            this.btnCastsEditor.UseVisualStyleBackColor = true;
+            this.btnCastsEditor.Click += new System.EventHandler(this.picCastsEditor_Click);
+            // 
+            // btnConditionsEditor
+            // 
+            this.btnConditionsEditor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnConditionsEditor.Location = new System.Drawing.Point(430, 47);
+            this.btnConditionsEditor.Name = "btnConditionsEditor";
+            this.btnConditionsEditor.Size = new System.Drawing.Size(129, 75);
+            this.btnConditionsEditor.TabIndex = 3;
+            this.btnConditionsEditor.Text = "Conditions Editor";
+            this.btnConditionsEditor.UseVisualStyleBackColor = true;
+            this.btnConditionsEditor.Click += new System.EventHandler(this.picConditionEditor_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ScriptEditor.Properties.Resources.background;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(330, 371);
+            this.ClientSize = new System.Drawing.Size(722, 410);
+            this.Controls.Add(this.btnConditionsEditor);
+            this.Controls.Add(this.btnCastsEditor);
+            this.Controls.Add(this.btnEventEditor);
+            this.Controls.Add(this.btnScriptEditor);
             this.Controls.Add(this.btnWaypoints);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.picConditionEditor);
-            this.Controls.Add(this.picCastsEditor);
-            this.Controls.Add(this.picGitLink);
-            this.Controls.Add(this.picEventEditor);
-            this.Controls.Add(this.picScriptEditor);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -415,11 +381,6 @@
             this.Name = "Form1";
             this.Text = "AlphaCore Developer Tools";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picScriptEditor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEventEditor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picGitLink)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCastsEditor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picConditionEditor)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -430,12 +391,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox picScriptEditor;
-        private System.Windows.Forms.PictureBox picEventEditor;
-        private System.Windows.Forms.PictureBox picGitLink;
-        private System.Windows.Forms.PictureBox picCastsEditor;
-        private System.Windows.Forms.PictureBox picConditionEditor;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmiEditors;
         private System.Windows.Forms.ToolStripMenuItem tsmiScripts;
@@ -469,5 +424,9 @@
         private System.Windows.Forms.ToolStripProgressBar LoadingBar;
         private System.Windows.Forms.ToolStripStatusLabel LoadingStatusText;
         private System.Windows.Forms.Button btnWaypoints;
+        private System.Windows.Forms.Button btnScriptEditor;
+        private System.Windows.Forms.Button btnEventEditor;
+        private System.Windows.Forms.Button btnCastsEditor;
+        private System.Windows.Forms.Button btnConditionsEditor;
     }
 }

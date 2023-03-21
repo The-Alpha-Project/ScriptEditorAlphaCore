@@ -11,20 +11,6 @@ namespace ScriptEditor
     {
         bool dataLoaded = false;
 
-        SoundPlayer player = new SoundPlayer(Properties.Resources.MouseOver);
-
-        // Images for the buttons that change when moused over.
-        Image imgScriptEditor = Properties.Resources.script_editor_button_black;
-        Image imgScriptEditorHighlighted = Properties.Resources.script_editor_button;
-        Image imgEventEditor = Properties.Resources.event_editor_button_black;
-        Image imgEventEditorHighlighted = Properties.Resources.event_editor_button;
-        Image imgCastsEditor = Properties.Resources.cast_editor_button_black;
-        Image imgCastsEditorHighlighted = Properties.Resources.cast_editor_button;
-        Image imgConditionsEditor = Properties.Resources.condition_editor_button_black;
-        Image imgConditionsEditorHighlighted = Properties.Resources.condition_editor_button;
-        Image imgGitLink = Properties.Resources.gitlink1;
-        Image imgGitLinkHighlighted = Properties.Resources.gitlink2;
-
         private bool CheckDBConnection()
         {
             MySqlConnection conn = new MySqlConnection(string.Format(Program.connString, "alpha_world"));            
@@ -133,28 +119,6 @@ namespace ScriptEditor
 
         }
 
-        private void picScriptEditor_MouseEnter(object sender, EventArgs e)
-        {
-            picScriptEditor.BackgroundImage = imgScriptEditorHighlighted;
-            player.Play();
-        }
-
-        private void picScriptEditor_MouseLeave(object sender, EventArgs e)
-        {
-            picScriptEditor.BackgroundImage = imgScriptEditor;
-        }
-
-        private void picEventEditor_MouseEnter(object sender, EventArgs e)
-        {
-            picEventEditor.BackgroundImage = imgEventEditorHighlighted;
-            player.Play();
-        }
-
-        private void picEventEditor_MouseLeave(object sender, EventArgs e)
-        {
-            picEventEditor.BackgroundImage = imgEventEditor;
-        }
-
         private void picScriptEditor_Click(object sender, EventArgs e)
         {
             if (!dataLoaded) return;
@@ -169,49 +133,11 @@ namespace ScriptEditor
             editor.Show();
         }
 
-        private void picGitLink_MouseEnter(object sender, EventArgs e)
-        {
-            picGitLink.BackgroundImage = imgGitLinkHighlighted;
-            player.Play();
-        }
-
-        private void picGitLink_MouseLeave(object sender, EventArgs e)
-        {
-            picGitLink.BackgroundImage = imgGitLink;
-        }
-
-        private void picGitLink_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/brotalnia/ScriptEditor");
-        }
-
-        private void picCastsEditor_MouseEnter(object sender, EventArgs e)
-        {
-            picCastsEditor.BackgroundImage = imgCastsEditorHighlighted;
-            player.Play();
-        }
-
-        private void picCastsEditor_MouseLeave(object sender, EventArgs e)
-        {
-            picCastsEditor.BackgroundImage = imgCastsEditor;
-        }
-
         private void picCastsEditor_Click(object sender, EventArgs e)
         {
             if (!dataLoaded) return;
             FormCastsEditor editor = new FormCastsEditor();
             editor.Show();
-        }
-
-        private void picConditionEditor_MouseEnter(object sender, EventArgs e)
-        {
-            picConditionEditor.BackgroundImage = imgConditionsEditorHighlighted;
-            player.Play();
-        }
-
-        private void picConditionEditor_MouseLeave(object sender, EventArgs e)
-        {
-            picConditionEditor.BackgroundImage = imgConditionsEditor;
         }
 
         private void picConditionEditor_Click(object sender, EventArgs e)
