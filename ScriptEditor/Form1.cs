@@ -69,6 +69,7 @@ namespace ScriptEditor
             loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureMovementSpecial(Program.connString, "alpha_world"), "Loading creature movement special ..."));
             loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureMovementTemplate(Program.connString, "alpha_world"), "Loading creature movement templates ..."));
             loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureSpellsSniffs(Program.connString, "sniffs_combined5"), "Loading creature spell sniffs ..."));
+            loadingActions.Add(new LoadingAction(() => GameData.LoadCreatureDisplayInfo(Program.connString, "alpha_dbc"), "Loading creature display info ..."));
 
             LoadingBar.Step = loadingActions.Count;
 
@@ -245,6 +246,12 @@ namespace ScriptEditor
         private void btnWaypoints_Click(object sender, EventArgs e)
         {
             FormWaypointEditor form = new FormWaypointEditor();
+            form.ShowDialog();
+        }
+
+        private void btnCreatureEditor_Click(object sender, EventArgs e)
+        {
+            FormCreatureEditor form = new FormCreatureEditor();
             form.ShowDialog();
         }
     }

@@ -23,7 +23,7 @@ namespace ScriptEditor
         private void FormSpellSniffs_Shown(object sender, EventArgs e)
         {
             string spell = GameData.SpellInfoList.Find(x => x.ID == SpellId).Name;
-            string creature = GameData.CreatureInfoList.Find(x => x.ID == Entry / 10).Name;
+            string creature = GameData.CreatureInfoList.Find(x => x.Entry == Entry / 10).Name;
             lblHeader.Text = string.Format("Sniffs for spell \"{0}\" used by creature \"{1}\"", spell, creature);
 
             List<CreatureSpellsSniff> list = GameData.CreatureSpellsSniffsList.FindAll(x => x.Entry == Entry / 10 && x.Spell_id == SpellId);

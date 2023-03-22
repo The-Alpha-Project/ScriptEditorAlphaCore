@@ -27,6 +27,7 @@ namespace ScriptEditor
         public static readonly List<Waypoint> CreatureMovementList = new List<Waypoint>();
         public static readonly List<Waypoint> CreatureMovementSpecialList = new List<Waypoint>();
         public static readonly List<Waypoint> CreatureMovementTemplateList = new List<Waypoint>();
+        public static readonly List<uint> CreatureDisplayIdList = new List<uint>();
         public static readonly List<ComboboxPair> UpdateFieldsList = new List<ComboboxPair>();
         public static readonly List<ComboboxPair> FlagFieldsList = new List<ComboboxPair>();
         public static readonly List<ComboboxPair> MapsList = new List<ComboboxPair>();
@@ -153,7 +154,7 @@ namespace ScriptEditor
         {
             foreach (CreatureInfo creature in CreatureInfoList)
             {
-                if (creature.ID == id)
+                if (creature.Entry == id)
                     return creature.Name;
             }
 
@@ -518,13 +519,14 @@ namespace ScriptEditor
             }
             conn.Close();
         }
+
         public static void LoadCreatures(string connString, string database)
         {
             CreatureInfoList.Clear();
 
             MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT `entry`, `level_min`, `level_max`, `rank`, `name`, `spell_list_id` FROM `creature_template` ORDER BY `entry`";
+            command.CommandText = "SELECT entry, level_min, level_max, rank, spell_list_id, name, IFNULL(subname, '') as subname, display_id1, display_id2, display_id3, display_id4, mount_display_id FROM `creature_template` ORDER BY `entry`";
             try
             {
                 conn.Open();
@@ -533,7 +535,20 @@ namespace ScriptEditor
                 while (reader.Read())
                 {
                     // Add the new creature entry to the list.
-                    CreatureInfoList.Add(new CreatureInfo(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetUInt32(2), reader.GetUInt32(3), reader.GetUInt32(5), reader.GetString(4)));
+                    CreatureInfoList.Add(new CreatureInfo(reader.GetUInt32("entry"), // entry
+                                                          reader.GetUInt32("level_min"), // level_min
+                                                          reader.GetUInt32("level_max"), // level_max
+                                                          reader.GetUInt32("rank"), // rank
+                                                          reader.GetUInt32("spell_list_id"), // spell_list_id
+                                                          reader.GetString("name"),    
+                                                          reader.GetString("subname"),
+                                                          reader.GetUInt32("display_id1"),
+                                                          reader.GetUInt32("display_id2"),
+                                                          reader.GetUInt32("display_id3"),
+                                                          reader.GetUInt32("display_id4"),
+                                                          reader.GetUInt32("mount_display_id")
+                                                          
+                                                          ));
                 }
                 reader.Close();
             }
@@ -964,6 +979,32 @@ namespace ScriptEditor
                 while (reader.Read())
                 {
                     CreatureMovementTemplateList.Add(new Waypoint(reader.GetUInt32(0), reader.GetUInt32(1), reader.GetFloat(2), reader.GetFloat(3), reader.GetFloat(4), reader.GetFloat(5), reader.GetUInt32(6), reader.GetFloat(7), reader.GetUInt32(8)));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            conn.Close();
+        }
+
+        internal static void LoadCreatureDisplayInfo(string connString, string database)
+        {
+            CreatureDisplayIdList.Clear();
+            MySqlConnection conn = new MySqlConnection(string.Format(connString, database));
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT ID FROM creaturedisplayinfo";
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                CreatureDisplayIdList.Add(0);
+
+                while (reader.Read())
+                {
+                    CreatureDisplayIdList.Add(reader.GetUInt32(0));
                 }
                 reader.Close();
             }
@@ -2546,20 +2587,34 @@ namespace ScriptEditor
     }
     public struct CreatureInfo
     {
-        public uint ID;
+        public uint Entry;
+        public uint Display_id1;
+        public uint Display_id2;
+        public uint Display_id3;
+        public uint Display_id4;
+        public uint Mount_display_id;
         public uint MinLevel;
         public uint MaxLevel;
         public uint Rank;
         public uint SpellListId;
         public string Name;
-        public CreatureInfo(uint id, uint minlevel, uint maxlevel, uint rank, uint spelllistid, string name)
+        public string Subname;
+
+        public CreatureInfo(uint entry, uint minlevel, uint maxlevel, uint rank, uint spelllistid, string name, string subname, uint display_id1, uint display_id2, uint display_id3, uint display_id4, uint mount_display_id)
         {
-            ID = id;
+            Entry = entry;
             Name = name;
+            Subname = subname;
             MinLevel = minlevel;
             MaxLevel = maxlevel;
             Rank = rank;
             SpellListId = spelllistid;
+            Display_id1 = display_id1;
+            Display_id2 = display_id2;
+            Display_id3 = display_id3;
+            Display_id4 = display_id4;
+            Mount_display_id = mount_display_id;
+
         }
     }
     public struct SpellInfo

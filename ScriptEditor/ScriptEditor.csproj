@@ -130,6 +130,12 @@
     <Compile Include="FormClassMask.Designer.cs">
       <DependentUpon>FormClassMask.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCreatureEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreatureEditor.Designer.cs">
+      <DependentUpon>FormCreatureEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRaceMask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormClassMask.resx">
       <DependentUpon>FormClassMask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreatureEditor.resx">
+      <DependentUpon>FormCreatureEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRaceMask.resx">
       <DependentUpon>FormRaceMask.cs</DependentUpon>

@@ -66,6 +66,7 @@
             this.btnEventEditor = new System.Windows.Forms.Button();
             this.btnCastsEditor = new System.Windows.Forms.Button();
             this.btnConditionsEditor = new System.Windows.Forms.Button();
+            this.btnCreatureEditor = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -359,6 +360,17 @@
             this.btnConditionsEditor.UseVisualStyleBackColor = true;
             this.btnConditionsEditor.Click += new System.EventHandler(this.picConditionEditor_Click);
             // 
+            // btnCreatureEditor
+            // 
+            this.btnCreatureEditor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCreatureEditor.Location = new System.Drawing.Point(25, 128);
+            this.btnCreatureEditor.Name = "btnCreatureEditor";
+            this.btnCreatureEditor.Size = new System.Drawing.Size(129, 75);
+            this.btnCreatureEditor.TabIndex = 7;
+            this.btnCreatureEditor.Text = "Creature Editor";
+            this.btnCreatureEditor.UseVisualStyleBackColor = true;
+            this.btnCreatureEditor.Click += new System.EventHandler(this.btnCreatureEditor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,6 +378,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(722, 410);
+            this.Controls.Add(this.btnCreatureEditor);
             this.Controls.Add(this.btnConditionsEditor);
             this.Controls.Add(this.btnCastsEditor);
             this.Controls.Add(this.btnEventEditor);
@@ -428,5 +441,6 @@
         private System.Windows.Forms.Button btnEventEditor;
         private System.Windows.Forms.Button btnCastsEditor;
         private System.Windows.Forms.Button btnConditionsEditor;
+        private System.Windows.Forms.Button btnCreatureEditor;
     }
 }

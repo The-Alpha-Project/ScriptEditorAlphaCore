@@ -323,7 +323,7 @@ namespace ScriptEditor
             {
                 if (creature.SpellListId == lbi.Id)
                 {
-                    cmbUsedBy.Items.Add(creature.Name + " (" + creature.ID + ")");
+                    cmbUsedBy.Items.Add(creature.Name + " (" + creature.Entry + ")");
                 }
             }
 
