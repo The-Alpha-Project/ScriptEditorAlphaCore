@@ -167,6 +167,7 @@ namespace ScriptEditor
                 item.SubItems.Add(point.Position_x.ToString());
                 item.SubItems.Add(point.Position_y.ToString());
                 item.SubItems.Add(point.Position_z.ToString());
+                item.SubItems.Add(point.Waittime.ToString());
                 item.SubItems.Add(point.Script_id.ToString());
                 item.Tag = point;
 
